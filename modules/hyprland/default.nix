@@ -4,6 +4,16 @@ let
   exec = "exec Hyprland";
 in
 {
+  services = {
+    xserver = {
+      enable = true;
+
+      displayManager = {
+        gdm.enable = true;
+        defaultSession = "hyprland";
+      };
+    };
+  };
   environment = {
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
