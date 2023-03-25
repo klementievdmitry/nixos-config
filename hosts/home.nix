@@ -9,6 +9,12 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      # Development
+      rustup
+      rust-analyzer
+      clang
+      emacs
+
       # Terminal
       btop
       nitch
