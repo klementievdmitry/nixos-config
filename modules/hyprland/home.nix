@@ -43,7 +43,7 @@ let
     ${workspaces}
     ${monitors}
 
-    mainMod = SUPER
+    $mainMod = SUPER
 
     general {
       border_size = 3
