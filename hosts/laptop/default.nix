@@ -3,7 +3,7 @@
 {
   imports =
     [ ( import ./hardware-configuration.nix ) ] ++
-    [ ( import ../../modules/gnome/default.nix ) ];
+    [ ( import ../../modules/hyprland/default.nix ) ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

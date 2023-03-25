@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, hyprland, ... }:
 
 let
   system = "x86_64-linux";
@@ -20,6 +20,7 @@ in
       };
     };
     modules = [
+      hyprland.nixosModules.default
       ./laptop
       ./configuration.nix
 

@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ../../modules/gnome/home.nix ];
+    [ ../../modules/hyprland/home.nix ];
 
   home = {
     packages = with pkgs; [

@@ -15,6 +15,7 @@
       clang
 
       # Terminal
+      wezterm
       btop
       nitch
       ranger
@@ -36,6 +37,7 @@
       firefox
       google-chrome
       remmina
+      discord
 
       # File management
       gnome.file-roller
