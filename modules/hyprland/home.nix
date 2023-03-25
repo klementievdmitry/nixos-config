@@ -159,16 +159,17 @@ let
     bind = , XF86MonBrightnessDown, exec, ${pkgs.light}/bin/light -U 10
     bind = , XF86MonBrightnessUp, exec, ${pkgs.light}/bin/light -A 10
 
-    #windowrule=float,^(Rofi)$
-    windowrule=float,title:^(Volume Control)$
-    windowrule=float,title:^(Picture-in-Picture)$
-    windowrule=pin,title:^(Picture-in-Picture)$
-    windowrule=move 75% 75% ,title:^(Picture-in-Picture)$
-    windowrule=size 24% 24% ,title:^(Picture-in-Picture)$
+    #windowrule = float,^(Rofi)$
+    windowrule = float, title:^(Volume Control)$
+    windowrule = float, title:^(Picture-in-Picture)$
+    windowrule = pin, title:^(Picture-in-Picture)$
+    windowrule = move 75% 75% , title:^(Picture-in-Picture)$
+    windowrule = size 24% 24% , title:^(Picture-in-Picture)$
 
-    exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.blueman}/bin/blueman-applet
+    exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = emacs --daemon
+    exec-once = ${pkgs.waybar}/bin/waybar
+    exec-once = ${pkgs.blueman}/bin/blueman-applet
 
     ${execute}
   '';
