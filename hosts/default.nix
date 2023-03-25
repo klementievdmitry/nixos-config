@@ -14,7 +14,7 @@ in
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs user system;
+      inherit inputs user system hyprland;
       host = {
         hostName = "laptop";
       };

@@ -149,7 +149,7 @@ let
 
     bind = CTRL, L, resizeactive, 20 0
     bind = CTRL, H, resizeactive, -20 0
-    bind = CTRL, K, reizeactive, 0 -20
+    bind = CTRL, K, resizeactive, 0 -20
     bind = CTRL, J, resizeactive, 0 20
 
     bind = , Print, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - -o ~/Pictures/$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png && notify-send "Saved to ~/Pictures/$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png"
