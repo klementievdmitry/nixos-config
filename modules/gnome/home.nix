@@ -16,6 +16,16 @@
         "org.gnome.Console.desktop"
       ];
     };
+
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+      clock-show-weekday = true;
+    };
+
+    "org/gnome/desktop/calendar" = {
+      show-weekdate = true;
+    };
   };
 
   home.packages = with pkgs; [
