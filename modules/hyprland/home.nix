@@ -3,13 +3,10 @@
 let
   touchpad = with host;
     if hostName == "laptop" then ''
-      touchpad = {
+      touchpad {
         natural_scroll = true
-        middle_button_emulation = true
         tap-to-click = true
-        drag_lock = true
-        clickfinger_behavior = true
-        disable_while_typing = false
+        middle_button_emulation = true
       }
     '' else "";
 
@@ -60,7 +57,7 @@ let
       active_opacity = 0.93
       inactive_opacity = 0.93
       fullscreen_opacity = 1
-      blue = true
+      blur = true
       drop_shadow = false
     }
 
@@ -70,7 +67,7 @@ let
       animation = fade, 1, 7, default
       animation = windows, 1, 7, myBezier
       animation = windowsOut, 1, 3, default, popin 60%
-      animation = windowMove, 1, 7, myBezier
+      animation = windowsMove, 1, 7, myBezier
     }
 
     input {
@@ -92,7 +89,8 @@ let
     ${gestures}
 
     dwindle {
-      damage_tracking = 2
+      pseudotile = false
+      force_split = 2
     }
 
     bindm = $mainMod, mouse:272, movewindow
@@ -107,7 +105,7 @@ let
     bind = $mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show drun
     bind = $mainMod, P, pseudo
     bind = $mainMod, F, fullscreen
-    bind = $mainMod, R, forcerenderreload
+    bind = $mainMod, R, forcerendererreload
     bind = $mainMod SHIFT, R, exec, ${pkgs.hyprland}/bin/hyprctl reload
     bind = $mainMod, T, exec, ${pkgs.emacs}/bin/emacsclient -c
 
