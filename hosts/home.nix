@@ -28,6 +28,9 @@
       vlc
       stremio
 
+      # Bluetooth
+      blueman
+
       # Apps
       appimage-run
       firefox
