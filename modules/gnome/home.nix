@@ -61,6 +61,17 @@
       # unmaximize = ["<Super>Down"];
       maximize = ["@as []"];                          # For tilers
       unmaximize = ["@as []"];
+
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
+
       switch-to-workspace-left = ["<Super>Left"];
       switch-to-workspace-right = ["<Super>Right"];
       switch-to-workspace-1 = ["<Super>1"];
