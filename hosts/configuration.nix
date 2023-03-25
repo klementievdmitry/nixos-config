@@ -98,6 +98,18 @@
     flatpak.enable = true;
   };
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      hsphfpd.enable = false;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
+    };
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;
