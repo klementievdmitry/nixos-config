@@ -13,7 +13,6 @@
       rustup
       rust-analyzer
       clang
-      emacs
 
       # Terminal
       btop
