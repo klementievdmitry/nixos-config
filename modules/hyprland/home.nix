@@ -31,7 +31,8 @@ let
 
   execute = with host;
     ''
-      exec-once = ${pkgs.swaybg}/bin/swaybg
+      exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+      exec-once = ${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
     '';
 in
 let
