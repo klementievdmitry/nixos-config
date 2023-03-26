@@ -4,6 +4,8 @@ let
   exec = "exec Hyprland";
 in
 {
+  imports = [ ../programs/waybar.nix ];
+
   services = {
     xserver = {
       enable = true;
