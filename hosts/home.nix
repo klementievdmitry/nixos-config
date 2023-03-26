@@ -51,10 +51,10 @@
       zip
     ];
 
+    file.".config/wall".source = ../modules/wall;
+
     stateVersion = "22.05";
   };
-
-  file.".config/wall".source = ../modules/wall;
 
   programs = {
     home-manager.enable = true;
