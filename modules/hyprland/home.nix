@@ -99,7 +99,7 @@ let
     bind = $mainMod, Return, exec, ${pkgs.wezterm}/bin/wezterm
     bind = $mainMod, Q, killactive
     bind = $mainMod, Escape, exit
-    bind = $mainMod, L, exec, ${pkgs.swaylock}/bin/swaylock
+    bind = $mainMod SHIFT, L, exec, ${pkgs.swaylock}/bin/swaylock
     bind = $mainMod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm
     bind = $mainMod, H, togglefloating
     bind = $mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show drun
