@@ -51,7 +51,7 @@
       zip
     ];
 
-    file.".config/wall".source = ../modules/wall;
+    file.".config/wall".source = ../modules/themes/wall;
 
     stateVersion = "22.05";
   };
