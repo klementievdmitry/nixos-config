@@ -101,7 +101,7 @@ let
     bind = $mainMod, Escape, exit
     bind = $mainMod SHIFT, L, exec, ${pkgs.swaylock}/bin/swaylock
     bind = $mainMod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm
-    bind = $mainMod, H, togglefloating
+    bind = $mainMod SHIFT, H, togglefloating
     bind = $mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show drun
     bind = $mainMod, P, pseudo
     bind = $mainMod, F, fullscreen
