@@ -2,6 +2,7 @@
 
 {
   imports =
+    ( import ../modules/programs ) ++
     [ doom-emacs.hmModule ];
 
   home = {
