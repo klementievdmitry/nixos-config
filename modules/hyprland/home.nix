@@ -99,9 +99,9 @@ let
     bind = $mainMod, Return, exec, ${pkgs.wezterm}/bin/wezterm
     bind = $mainMod, Q, killactive
     bind = $mainMod, Escape, exit
-    bind = $mainMod SHIFT, L, exec, ${pkgs.swaylock}/bin/swaylock
+    bind = $mainMod ALT, L, exec, ${pkgs.swaylock}/bin/swaylock
     bind = $mainMod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm
-    bind = $mainMod SHIFT, H, togglefloating
+    bind = $mainMod, S, togglefloating
     bind = $mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show drun
     bind = $mainMod, P, pseudo
     bind = $mainMod, F, fullscreen
@@ -114,10 +114,10 @@ let
     bind = $mainMod, K, movefocus, u
     bind = $mainMod, J, movefocus, d
 
-    bind = SUPERSHIFT, H, movewindow, l
-    bind = SUPERSHIFT, L, movewindow, r
-    bind = SUPERSHIFT, K, movewindow, u
-    bind = SUPERSHIFT, J, movewindow, d
+    bind = $mainMod SHIFT, H, movewindow, l
+    bind = $mainMod SHIFT, L, movewindow, r
+    bind = $mainMod SHIFT, K, movewindow, u
+    bind = $mainMod SHIFT, J, movewindow, d
 
     bind = $mainMod, 1, workspace, 1
     bind = $mainMod, 2, workspace, 2
@@ -129,8 +129,8 @@ let
     bind = $mainMod, 8, workspace, 8
     bind = $mainMod, 9, workspace, 9
     bind = $mainMod, 0, workspace, 10
-    bind = $mainMod, L, workspace, +1
-    bind = $mainMod, H, workspace, -1
+    bind = $mainMod CTRL, L, workspace, +1
+    bind = $mainMod CTRL, H, workspace, -1
 
     bind = $mainMod SHIFT, 1, movetoworkspace, 1
     bind = $mainMod SHIFT, 2, movetoworkspace, 2
@@ -142,8 +142,8 @@ let
     bind = $mainMod SHIFT, 8, movetoworkspace, 8
     bind = $mainMod SHIFT, 9, movetoworkspace, 9
     bind = $mainMod SHIFT, 0, movetoworkspace, 10
-    bind = $mainMod SHIFT, right, movetoworkspace, +1
-    bind = $mainMod SHIFT, left, movetoworkspace, -1
+    bind = $mainMod SHIFT, L, movetoworkspace, +1
+    bind = $mainMod SHIFT, H, movetoworkspace, -1
 
     bind = CTRL, L, resizeactive, 20 0
     bind = CTRL, H, resizeactive, -20 0
