@@ -5,6 +5,8 @@ let
 in
 {
   imports =
+    [ ../programs/swayidle.nix ] ++
+    [ ../programs/swaylock.nix ] ++
     [ ../programs/wired.nix ] ++
     [ ../programs/waybar.nix ];
 
@@ -45,7 +47,6 @@ in
       mpvpaper
       slurp
       swappy
-      swaylock
       wl-clipboard
       wlr-randr
       hyprpaper
