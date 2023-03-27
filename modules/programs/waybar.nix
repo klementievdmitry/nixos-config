@@ -1,6 +1,12 @@
-{ config, lib, pkgs, user, host, ... }:
+{ config, lib, pkgs, user, host, hyprland, system, ... }:
 
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      waybar = hyprland.packages.${system}.waybar-hyprland;
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     waybar
   ];
