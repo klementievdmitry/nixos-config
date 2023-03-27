@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, doom-emacs, ... }:
+{ config, lib, pkgs, user, doom-emacs, wired, ... }:
 
 {
   imports =

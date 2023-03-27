@@ -30,9 +30,13 @@
         url = "github:hyprwm/hyprpaper";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      wired = {
+        url = "github:Toqozz/wired-notify";
+      };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, doom-emacs, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, doom-emacs, wired, ... }:
     let
       user = "klvdmy";
     in
@@ -40,7 +44,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprland hyprpaper doom-emacs;
+          inherit inputs nixpkgs user home-manager hyprland hyprpaper doom-emacs wired;
         }
       );
     };

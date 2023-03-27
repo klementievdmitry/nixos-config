@@ -1,4 +1,4 @@
-{ config, lib, pkgs, host, system, hyprland, hyprpaper, ... }:
+{ config, lib, pkgs, host, system, hyprland, hyprpaper, wired, ... }:
 
 let
   exec = "exec Hyprland";
@@ -39,6 +39,7 @@ in
     };
 
     systemPackages = with pkgs; [
+      wired
       grim
       mpvpaper
       slurp
@@ -64,6 +65,7 @@ in
 
   nixpkgs.overlays = [
     (final: prev: {
+      wired = wired.packages.${system}.wired;
       hyprpaper = hyprpaper.packages.${system}.hyprpaper;
       waybar = hyprland.packages.${system}.waybar-hyprland;
     })
