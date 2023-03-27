@@ -5,6 +5,7 @@ let
 in
 {
   imports =
+    [ ../programs/hyprpaper.nix ] ++
     [ ../programs/swaylock.nix ] ++
     [ ../programs/wired.nix ] ++
     [ ../programs/waybar.nix ];
@@ -48,14 +49,7 @@ in
       swappy
       wl-clipboard
       wlr-randr
-      hyprpaper
     ];
-  };
-
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-    '';
   };
 
   programs = {
@@ -63,10 +57,4 @@ in
       enable = true;
     };
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      hyprpaper = hyprpaper.packages.${system}.hyprpaper;
-    })
-  ];
 }

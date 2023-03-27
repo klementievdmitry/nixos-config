@@ -5,6 +5,12 @@
     swaylock
   ];
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   home-manager.users.${user} = {
     programs.swaylock.settings = {
       #image = "$HOME/.config/wall";
