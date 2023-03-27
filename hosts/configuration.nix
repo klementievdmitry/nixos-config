@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, inputs, home-manager, ... }:
+{ config, lib, pkgs, user, inputs, home-manager, system, doom-emacs, ... }:
 
 {
   networking.networkmanager.enable = true;
@@ -65,10 +65,6 @@
   };
 
   services = {
-    emacs = {
-      enable = true;
-    };
-
     printing = {
       enable = true;
     };
