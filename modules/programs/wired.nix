@@ -1,4 +1,4 @@
-{ config, lib, pkgs, wired, system, ... }:
+{ config, lib, pkgs, wired, system, user, ... }:
 
 {
   nixpkgs.overlays = [
@@ -10,4 +10,8 @@
   environment.systemPackages = with pkgs; [
     wired
   ];
+
+  home-manager.users.${user} = {
+    xdg.configFile."wired/wired.ron".source = ./wired.ron;
+  };
 }
