@@ -5,7 +5,6 @@ let
 in
 {
   imports =
-    [ ../programs/swayidle.nix ] ++
     [ ../programs/swaylock.nix ] ++
     [ ../programs/wired.nix ] ++
     [ ../programs/waybar.nix ];
