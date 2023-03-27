@@ -41,6 +41,7 @@ in
         window {
           margin: 0px;
           background-color: #${bg};
+          background: transparent;
         }
 
         #input {
@@ -48,7 +49,8 @@ in
           min-height: 20px;
           padding: 4px 10px;
           margin: 4px;
-          border: none;
+          border: 3px solid #${text};
+          border-radius: 5px;
           color: #dfdfdf;
           font-weight: bold;
           background-color: #${bg};
@@ -60,17 +62,13 @@ in
           border-radius: 0px;
         }
 
-        #outer-box {
-          margin: 0px;
-          padding: 3px;
-          border: none;
-          border-radius: 10px;
-          border: 3px solid #${text};
-        }
-
         #text:selected {
           color: #282c34;
-          background-color: transparent;
+        }
+
+        #entry {
+          margin-bottom: 2px;
+          background-color: #${bg};
         }
 
         #entry:selected {
