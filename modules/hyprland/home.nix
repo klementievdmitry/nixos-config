@@ -32,7 +32,7 @@ let
   execute = with host;
     ''
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-      exec-once = ${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+      exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
     '';
 in
 let
@@ -177,6 +177,10 @@ let
 in
 {
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
+  xdg.configFile."hypr/hyprpaper.conf".text = ''
+    preload = ~/.config/wall.jpg
+    wallpaper = , ~/.config/wall.jpg
+  '';
 
   programs.swaylock.settings = {
     #image = "$HOME/.config/wall";

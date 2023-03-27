@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, hyprland, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, hyprland, hyprpaper, ... }:
 
 let
   system = "x86_64-linux";
@@ -14,7 +14,7 @@ in
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs user system hyprland;
+      inherit inputs user system hyprland hyprpaper;
       host = {
         hostName = "laptop";
       };

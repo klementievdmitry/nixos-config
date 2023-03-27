@@ -1,4 +1,4 @@
-{ config, lib, pkgs, host, system, hyprland, ... }:
+{ config, lib, pkgs, host, system, hyprland, hyprpaper, ... }:
 
 let
   exec = "exec Hyprland";
@@ -46,6 +46,7 @@ in
       swaylock
       wl-clipboard
       wlr-randr
+      hyprpaper
     ];
   };
 
@@ -63,6 +64,7 @@ in
 
   nixpkgs.overlays = [
     (final: prev: {
+      hyprpaper = hyprpaper.packages.${system}.hyprpaper;
       waybar = hyprland.packages.${system}.waybar-hyprland;
     })
   ];

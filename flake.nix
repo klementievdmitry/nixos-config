@@ -25,9 +25,14 @@
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      hyprpaper = {
+        url = "github:hyprwm/hyprpaper";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, doom-emacs, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, doom-emacs, ... }:
     let
       user = "klvdmy";
     in
@@ -35,7 +40,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprland doom-emacs;
+          inherit inputs nixpkgs user home-manager hyprland hyprpaper doom-emacs;
         }
       );
     };

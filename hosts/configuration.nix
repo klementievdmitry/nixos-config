@@ -1,6 +1,8 @@
 { config, lib, pkgs, user, inputs, home-manager, ... }:
 
 {
+  networking.networkmanager.enable = true;
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];

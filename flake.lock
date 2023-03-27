@@ -304,6 +304,26 @@
         "type": "github"
       }
     },
+    "hyprpaper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678893556,
+        "narHash": "sha256-FHhBetkV/S7M9BMpbCzUWX/P5E7tGE4mZIpj/2m0K2M=",
+        "owner": "hyprwm",
+        "repo": "hyprpaper",
+        "rev": "61961973cfd10853b32c7f904cdb88f9ab6d84dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprpaper",
+        "type": "github"
+      }
+    },
     "nix-straight": {
       "flake": false,
       "locked": {
@@ -454,6 +474,7 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprpaper": "hyprpaper",
         "nixpkgs": "nixpkgs"
       }
     },
