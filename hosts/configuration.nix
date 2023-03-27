@@ -65,6 +65,10 @@
   };
 
   services = {
+    emacs = {
+      enable = true;
+    };
+
     printing = {
       enable = true;
     };

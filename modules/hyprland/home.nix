@@ -168,7 +168,6 @@ let
     windowrule = size 24% 24% , title:^(Picture-in-Picture)$
 
     exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once = emacs --daemon
     exec-once = ${pkgs.wired}/bin/wired
     exec-once = ${pkgs.waybar}/bin/waybar
     exec-once = ${pkgs.blueman}/bin/blueman-applet
