@@ -172,7 +172,6 @@
 	 ("C-h" . 'evil-delete-backward-char-and-join)) ; I use(no) this instead
                                                        ; of backspace
   :config
-  (message "Hello, Evil!")
   (evil-mode 1) ; Take on evil-mode
   
   ;; Use visual line motions even outside of visual-line-mode buffers
