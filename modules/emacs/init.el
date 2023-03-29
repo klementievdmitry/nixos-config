@@ -219,4 +219,19 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
+;; Magit - Emacs git integration
+(use-package magit
+  :commands (magit-status magit-get-current-branch)
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+;; [2020-11-24] This package is now a part of evil-collection
+(use-package evil-magit
+  :disabled ; Disable package because it's deprecated
+            ; (use `evil-collection` instead of `evil-magit`)
+  :after magit)
+
+;; Forge - i need more Emacs git integrations
+(use-package forge)
+
 ;;; init.el ends here
