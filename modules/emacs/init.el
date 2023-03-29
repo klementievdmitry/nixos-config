@@ -9,7 +9,7 @@
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex tools unix vc wp
 ;; Homepage: https://github.com/klvdmy/init
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "26.1"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -138,20 +138,85 @@
   ([remap describe-key] . helpful-key))
 
 ;; General package for key bindings
-(use-package general
-  :config
+(use-package general ; This package may be used in other
+		     ; packages config (like `hydra`)
+  :after evil ; Load `general` after `evil`
+  
+  :config ; This is a basic general conf
   ;; Definer
-  (general-create-definer klvdmy/leader-keys
-    :prefix "C-c")
+  (general-create-definer klvdmy/leader-keys ; This defined may be used
+                                             ; in other packages (like `hydra`)
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
 
-  ;; Define leader key bindings
+  ;; Define basic leader key bindings
   (klvdmy/leader-keys
     "tt" '(counsel-load-theme :which-key "choose theme"))
 
-  ;; Define all other key bindings
+  ;; Define all other basic key bindings
   (general-define-key
    "<escape>" 'keyboard-escape-quit ; Make ESC quit prompts
    "C-M-j" 'counsel-switch-buffer
    "C-s" 'counsel-grep-or-swiper))
+
+;; Emacs Evil - Vim-like modal editing in Emacs
+(defun klvdmy/evil-hook ()
+  (dolist (mode '(custom-mode
+		  eshell-mode
+		  git-rebase-mode
+		  erc-mode
+		  circe-server-mode
+		  circe-chat-mode
+		  circe-query-mode
+		  sauron-mode
+		  term-mode))
+    (add-to-list 'evil-emacs-state-modes mode)))
+
+(use-package evil
+  :custom
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
+  (evil-want-C-u-scroll t) ; "C-u" - scroll up
+			   ; "C-d" - scroll down
+  (evil-want-C-i-jump nil)
+  :hook (evil-mode . klvdmy/evil-hook)
+  :bind (:map evil-insert-state-map
+	 ("C-g" . evil-normal-state) ; "C-g" in insert mode to go to normal mode
+                                     ; I use that's instead of "jk"
+	 ("C-h" . evil-delete-backward-char-and-join)) ; I use(no) this instead
+                                                       ; of backspace
+  :config
+  (evil-mode 1) ; Take on evil-mode
+  
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+(use-package evil-collection ; This is a collection of
+			     ; evil bindings for the parts
+			     ; of emacs that evil does not
+                             ; cover properly by default,
+                             ; such as `help-mode`,
+                             ; `M-x calendar`. Eshell and more
+  :after evil
+  :config
+  (evil-collection-init))
+
+;; Hydra
+(use-package hydra ; So cool package for me
+                   ; for text resizing
+  :config
+  (defhydra hydra-text-scale (:timeout 4)
+    "scale text"
+    ("j" text-scale-increase "in")
+    ("k" text-scale-decrease "out")
+    ("f" nil "finished" :exit t))
+
+  (klvdmy/leader-keys
+    "ts" '(hydra-text-scale/body :which-key "scale text")))
 
 ;;; init.el ends here
