@@ -64,7 +64,7 @@
 ;; Set custom theme
 (use-package kaolin-themes
   :config
-  (load-theme 'kaolin-eclipse)
+  (load-theme 'kaolin-eclipse t)
   (kaolin-treemacs-theme))
 
 ;; Show line and column numbers
@@ -106,6 +106,9 @@
   (ivy-initial-inputs-alist nil) ; Don't start searches with ^
   :config
   (counsel-mode 1))
+
+;; You may be use use-package `:bind` instead of global-set-key
+(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
 ;; Doom modeline
 (use-package doom-modeline
