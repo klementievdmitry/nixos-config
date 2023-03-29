@@ -107,7 +107,7 @@
   :config
   (counsel-mode 1))
 
-;; You may be use use-package `:bind` instead of global-set-key
+;; You can use use-package `:bind` instead of global-set-key
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
 ;; Doom modeline
