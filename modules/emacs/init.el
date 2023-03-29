@@ -36,9 +36,6 @@
 ;; Set the font size
 (set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
 
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; Initialize package sources
 (require 'package)
 
@@ -146,6 +143,7 @@
 
   ;; Define all other key bindings
   (general-define-key
+   "<escape>" 'keyboard-escape-quit ; Make ESC quit prompts
    "C-M-j" 'counsel-switch-buffer
    "C-s" 'counsel-grep-or-swiper))
 
