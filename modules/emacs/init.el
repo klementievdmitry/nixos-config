@@ -43,7 +43,7 @@
                          ("melpa-stable" . "https://stable.melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
-
+nn
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -113,6 +113,13 @@
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Which-key
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :custom
+  (which-key-idle-delay 0.3))
 
 ;; Ivy rich
 (use-package ivy-rich
