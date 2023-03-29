@@ -159,18 +159,6 @@
    "C-s" 'counsel-grep-or-swiper))
 
 ;; Emacs Evil - Vim-like modal editing in Emacs
-(defun klvdmy/evil-hook ()
-  (dolist (mode '(custom-mode
-		  eshell-mode
-		  git-rebase-mode
-		  erc-mode
-		  circe-server-mode
-		  circe-chat-mode
-		  circe-query-mode
-		  sauron-mode
-		  term-mode))
-    (add-to-list 'evil-emacs-state-modes mode)))
-
 (use-package evil
   :custom
   (evil-want-integration t)
@@ -178,14 +166,13 @@
   (evil-want-C-u-scroll t) ; "C-u" - scroll up
 			   ; "C-d" - scroll down
   (evil-want-C-i-jump nil)
-  :hook (evil-mode . klvdmy/evil-hook)
   :bind (:map evil-insert-state-map
-	 ("C-g" . evil-normal-state) ; "C-g" in insert mode to go to normal mode
+	 ("C-g" . 'evil-normal-state) ; "C-g" in insert mode to go to normal mode
                                      ; I use that's instead of "jk"
-	 ("C-h" . evil-delete-backward-char-and-join)) ; I use(no) this instead
+	 ("C-h" . 'evil-delete-backward-char-and-join)) ; I use(no) this instead
                                                        ; of backspace
   :config
-  (message "Hello, World!")
+  (message "Hello, Evil!")
   (evil-mode 1) ; Take on evil-mode
   
   ;; Use visual line motions even outside of visual-line-mode buffers
