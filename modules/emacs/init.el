@@ -71,7 +71,7 @@
 ;; Hide line numbers in org/term/eshell modes
 (dolist (mode '(org-mode-hook
 		term-mode-hook
-		eshell-mode-h/ook))
+		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Command log mode
