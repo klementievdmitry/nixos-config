@@ -140,8 +140,6 @@
 ;; General package for key bindings
 (use-package general ; This package may be used in other
 		     ; packages config (like `hydra`)
-  :after evil ; Load `general` after `evil`
-  
   :config ; This is a basic general conf
   ;; Definer
   (general-create-definer klvdmy/leader-keys ; This defined may be used
@@ -187,6 +185,7 @@
 	 ("C-h" . evil-delete-backward-char-and-join)) ; I use(no) this instead
                                                        ; of backspace
   :config
+  (message "Hello, World!")
   (evil-mode 1) ; Take on evil-mode
   
   ;; Use visual line motions even outside of visual-line-mode buffers
