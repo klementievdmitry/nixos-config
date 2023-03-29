@@ -107,9 +107,6 @@
   :config
   (counsel-mode 1))
 
-;; You can use use-package `:bind` instead of global-set-key
-(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
-
 ;; Doom modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -135,5 +132,21 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+
+;; General package for key bindings
+(use-package general
+  :config
+  ;; Definer
+  (general-create-definer klvdmy/leader-keys
+    :prefix "C-c")
+
+  ;; Define leader key bindings
+  (klvdmy/leader-keys
+    "tt" '(counsel-load-theme :which-key "choose theme"))
+
+  ;; Define all other key bindings
+  (general-define-key
+   "C-M-j" 'counsel-switch-buffer
+   "C-s" 'counsel-grep-or-swiper))
 
 ;;; init.el ends here
