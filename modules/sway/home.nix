@@ -11,6 +11,8 @@
 
       startup = [                                       # Run commands on Sway startup
         {command = "${pkgs.autotiling}/bin/autotiling"; always = true;} # Tiling Script
+	{command = "${pkgs.wired}/bin/wired"; always = false;} # Notifications
+	{command = "${pkgs.blueman}/bin/blueman-applet"; always = false;}
       ];
 
       bars = [];                                        # No bar because using Waybar
