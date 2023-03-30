@@ -62,6 +62,12 @@
       recursive = true;
     };
 
+    # Pipewire conf
+    file."~/config/pipewire" = {
+      source = ../modules/pipewire;
+      recursive = true;
+    };
+
     stateVersion = "22.05";
   };
 
