@@ -227,7 +227,7 @@
 
 ;; [2020-11-24] This package is now a part of evil-collection
 (use-package evil-magit
-  :disabled ; Disable package because it's deprecated
+  :disabled ; Disable package because it's deprecated (removed from melpa)
             ; (use `evil-collection` instead of `evil-magit`)
   :after magit)
 
