@@ -72,8 +72,8 @@ let
     }
 
     input {
-      kb_layout = us, ru, de
-      kb_options = grp:super_space_toggle
+      kb_layout = us, de, ru
+      kb_options = grp:caps_toggle
       repeat_rate = 50
       repeat_delay = 300
       numlock_by_default = true
@@ -103,7 +103,7 @@ let
     bind = $mainMod ALT, L, exec, ${pkgs.swaylock}/bin/swaylock
     bind = $mainMod, E, exec, ${pkgs.pcmanfm}/bin/pcmanfm
     bind = $mainMod, S, togglefloating
-    bind = $mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show drun
+    bind = $mainMod, D, exec, ${pkgs.wofi}/bin/wofi --show drun
     bind = $mainMod, P, pseudo
     bind = $mainMod, F, fullscreen
     bind = $mainMod, R, forcerendererreload
