@@ -9,10 +9,47 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    # For my laptop
+    "nvme_core.default_ps_max_latency_us=0"
 
+    # GPU Drivers
+    "radeon.si_support=0"
+    "amdgpu.si_support=1"
+    "radeon.cik_support=0"
+    "amdgpu.cik_support=1"
+  ];
+
+
+  # GPU Drivers
+  services = {
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+    };
+  };
+
+  # HIP for programs like Blender
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  ];
+
+  # OpenCL
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+
+  # Vulkan
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # File system
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
