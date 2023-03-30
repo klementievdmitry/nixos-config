@@ -1,10 +1,12 @@
 * NixOS configuration
 
-| WindowManager | Sway      |
-| Bar           | Waybar    |
-| Notifications | Wired     |
-| Lock screen   | Swaylock  |
-| Wallpapers    | Hyprpaper |
+|                   | Laptop    |
+| WindowManager     | Sway      |
+| Bar               | Waybar    |
+| Notifications     | Wired     |
+| Lock screen       | Swaylock  |
+| Wallpapers        | Hyprpaper |
+| Terminal Emulator | Wezterm   |
 
 /I don't use wallpapers with Sway/
 
