@@ -6,8 +6,14 @@
 | Lock screen   | Swaylock  |
 | Wallpapers    | Hyprpaper |
 
-* Partitioning
+/I don't use wallpapers with Sway/
 
+* Installing
+
+** Partitioning
+
+| Partition            | Label |
+| -------------------- | ----- |
 | Boot partition       | boot  |
 | Filesystem partition | nixos |
 | Swap partition       | swap  |
