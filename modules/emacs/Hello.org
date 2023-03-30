@@ -1,0 +1,26 @@
+* First Heading
+
+Here is *some* content!
+
+Here is the [[https://orgmode.org/][Org Mode homepage]]
+
+| Name  | Age | Uses Emacs |
+| David |  37 | YES        |
+
+- [X] First item
+- [X] Second item
+- [ ] Third item
+
+- [ ] First item
+- [ ] Second item
+- [X] Third item
+
+** Sub-Heading
+
+Add some more content!
+
+** Insertet Sub-Heading
+
+* Inserted Heading!
+
+* Second Heading
