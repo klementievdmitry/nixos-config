@@ -11,16 +11,25 @@ Here is the [[https://orgmode.org/][Org Mode homepage]]
 - [X] Second item
 - [ ] Third item
 
-- [ ] First item
-- [ ] Second item
-- [X] Third item
-
 ** Sub-Heading
 
 Add some more content!
 
 ** Insertet Sub-Heading
 
-* Inserted Heading!
+* TODO Inserted Heading!
 
-* Second Heading
+#+begin_src emacs-lisp
+  (defun my-elisp-func()
+    (message "Hello!"))
+#+end_src
+
+#+begin_src c
+  #include <stdio.h>
+
+  void main() {
+    printf("Hello, %s!", "World");
+  }
+#+end_src
+
+* DONE Second Heading
