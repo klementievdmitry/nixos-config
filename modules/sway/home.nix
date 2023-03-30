@@ -6,7 +6,7 @@
     systemdIntegration = true;                          # Enable sway-session.target to link to graphical-session.target for systemd
     config = rec {                                      # Sway configuration
       modifier = "Mod4";
-      terminal = "${pkgs.alacritty}/bin/wezterm";
+      terminal = "${pkgs.wezterm}/bin/wezterm";
       menu = "${pkgs.wofi}/bin/wofi --show drun";
 
       startup = [                                       # Run commands on Sway startup
@@ -27,16 +27,18 @@
 
       input = {                                         # Input modules: $ man sway-input
         "type:touchpad" = {
-          tap = "disabled";
+          tap = "enabled";
           dwt = "enabled";
           scroll_method = "two_finger";
           middle_emulation = "enabled";
           natural_scroll = "enabled";
         };
         "type:keyboard" = {
-          xkb_layout = "us, de, ru";
+          xkb_layout = "us,de,ru";
 	  xkb_options = "grp:caps_toggle";
           xkb_numlock = "enabled";
+	  repeat_rate = "50";
+          repeat_delay = "300";
         };
       };
 
@@ -56,6 +58,7 @@
         "${modifier}+space" = "exec ${menu}";           # Open menu
         "${modifier}+e" = "exec ${pkgs.pcmanfm}/bin/pcmanfm"; # File Manager
         "${modifier}+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy"; # Lock Screen
+	"${modifier}+t" = "exec emacsclient -c"; # Run emacsclient
 
         "${modifier}+r" = "reload";                     # Reload environment
         "${modifier}+q" = "kill";                       # Kill container
