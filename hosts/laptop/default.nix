@@ -3,6 +3,7 @@
 {
   imports =
     [ ( import ./hardware-configuration.nix ) ] ++
+    [ ( import ../../modules/programs/games.nix ) ] ++
     [ ( import ../../modules/sway/default.nix ) ];
 
   boot = {
@@ -13,15 +14,6 @@
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
-
-      #grub = {
-      #  enable = true;
-      #  version = 2;
-      #  devices = [ "nodev" ];
-      #  efiSupport = true;
-      #  useOSProber = true;
-      #  configurationLimit = 2;
-      #};
 
       systemd-boot = {
         enable = true;
