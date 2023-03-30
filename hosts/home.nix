@@ -40,7 +40,8 @@
       discord
 
       # Disk management
-      gparted
+      #gparted
+      btrfs-progs
 
       # File management
       gnome.file-roller
