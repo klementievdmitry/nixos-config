@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ../../modules/hyprland/home.nix ];
+    [ ../../modules/sway/home.nix ];
 
   home = {
     packages = with pkgs; [
