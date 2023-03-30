@@ -36,7 +36,6 @@
 
     jetbrains-mono
     fira-code
-    cantarell-fonts
 
     (nerdfonts.override {
       fonts = [
