@@ -5,3 +5,9 @@
 | Notifications | Wired     |
 | Lock screen   | Swaylock  |
 | Wallpapers    | Hyprpaper |
+
+* Partitioning
+
+| Boot partition       | boot  |
+| Filesystem partition | nixos |
+| Swap partition       | swap  |
