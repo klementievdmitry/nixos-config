@@ -1,0 +1,7 @@
+* NixOS configuration
+
+| WindowManager | Sway      |
+| Bar           | Waybar    |
+| Notifications | Wired     |
+| Lock screen   | Swaylock  |
+| Wallpapers    | Hyprpaper |
