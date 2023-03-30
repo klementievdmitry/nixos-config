@@ -53,6 +53,12 @@
 
     file.".config/wall.jpg".source = ../modules/themes/wall.jpg;
 
+    # Emacs conf
+    file.".emacs.d" = {
+      source = ../modules/emacs;
+      recursive = true;
+    };
+
     stateVersion = "22.05";
   };
 
@@ -75,7 +81,6 @@
     emacs = {
       enable = true;
       package = pkgs.emacs;
-      extraConfig.source = ../modules/emacs/init.el;
     };
   };
 

@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, hyprland, hyprpaper, wired, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, doom-emacs, hyprland, hyprpaper, wired, emacs-overlay, ... }:
 
 let
   system = "x86_64-linux";
@@ -28,7 +28,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit user doom-emacs;
+          inherit user doom-emacs emacs-overlay;
           host = {
             hostName = "laptop";
           };
