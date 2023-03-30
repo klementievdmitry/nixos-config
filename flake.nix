@@ -10,19 +10,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      # I don't use emacs-overlay
-      emacs-overlay = {
-        url = "github:nix-community/emacs-overlay";
-        flake = false;
-      };
-
-      # I don't use doom-emacs
-      doom-emacs = {
-        url = "github:nix-community/nix-doom-emacs";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.emacs-overlay.follows = "emacs-overlay";
-      };
-
       hyprland = {
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +25,7 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, doom-emacs, wired, emacs-overlay, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, wired, ... }:
     let
       user = "klvdmy";
     in
@@ -46,7 +33,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprland hyprpaper doom-emacs wired emacs-overlay;
+          inherit inputs nixpkgs user home-manager hyprland hyprpaper wired;
         }
       );
     };

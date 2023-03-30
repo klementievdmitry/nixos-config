@@ -1,9 +1,8 @@
-{ config, lib, pkgs, user, doom-emacs, wired, ... }:
+{ config, lib, pkgs, user, wired, ... }:
 
 {
   imports =
-    ( import ../modules/programs ) ++
-    [ doom-emacs.hmModule ];
+    ( import ../modules/programs );
 
   home = {
     username = "${user}";
@@ -72,11 +71,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    #doom-emacs = {
-    #  enable = true;
-    #  doomPrivateDir = ../modules/doom.d;
-    #};
 
     emacs = {
       enable = true;
