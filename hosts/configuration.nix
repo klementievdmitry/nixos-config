@@ -31,9 +31,13 @@
     carlito
     vegur
     source-code-pro
-    jetbrains-mono
     font-awesome
     corefonts
+
+    jetbrains-mono
+    fira-code
+    cantarell-fonts
+
     (nerdfonts.override {
       fonts = [
         "FiraCode"

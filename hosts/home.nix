@@ -59,15 +59,23 @@
   services = {
     # Enable Emacs as Daemon
     # using home-manager instead of native (for doom support)
-    emacs.enable = true;
+    emacs = {
+      enable = true;
+    };
   };
 
   programs = {
     home-manager.enable = true;
 
-    doom-emacs = {
+    #doom-emacs = {
+    #  enable = true;
+    #  doomPrivateDir = ../modules/doom.d;
+    #};
+
+    emacs = {
       enable = true;
-      doomPrivateDir = ../modules/doom.d;
+      package = pkgs.emacs;
+      extraConfig.source = ../modules/emacs/init.el;
     };
   };
 

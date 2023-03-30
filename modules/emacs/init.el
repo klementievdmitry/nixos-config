@@ -237,6 +237,40 @@
 (use-package forge)
 
 ;; Org mode
-(use-package org)
+(defun klvdmy/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (visual-line-mode 1))
+
+(defun klvdmy/org-font-setup ()
+  ;; Replace list hyphen with dot
+  (font-lock-add-keywords 'org-mode
+			  '(("^ *\\([-]\\) "
+			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  ;; Set faces for heading levels
+  (dolist (face '((org-level-1 . 1.2)
+		  (org-level-2 . 1.1)
+		  (org-level-3 . 1.05)
+		  (org-level-4 . 1.0)
+		  (org-level-5 . 1.1)
+		  (org-level-6 . 1.1)
+		  (org-level-7 . 1.1)
+		  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font "JetBrains Mono" :weight 'regular :height (cdr face))))
+
+(use-package org
+  :hook (org-mode . klvdmy/org-mode-setup)
+  :config
+  (klvdmy/org-font-setup)
+  :custom
+  (org-ellipsis " ▾")
+  (org-hide-emphasis-markers nil))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 ;;; init.el ends here
