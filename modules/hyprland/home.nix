@@ -72,8 +72,8 @@ let
     }
 
     input {
-      kb_layout = us, ru
-      kb_options = grp:alt_shift_toggle
+      kb_layout = us, ru, de
+      kb_options = grp:super_space_toggle
       repeat_rate = 50
       repeat_delay = 300
       numlock_by_default = true

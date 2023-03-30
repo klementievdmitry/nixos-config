@@ -14,6 +14,12 @@ in
     xserver = {
       enable = true;
 
+      layout = "us,ru,de";
+      xkbOptions = "grp:super_space_toggle";
+      libinput.enable = true;
+      modules = [ pkgs.xf86_input_wacom ];
+      wacom.enable = true;
+
       displayManager = {
         gdm.enable = true;
         defaultSession = "hyprland";
