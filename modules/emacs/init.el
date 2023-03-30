@@ -33,14 +33,23 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-;; Set the font size
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
+(defun klvdmy/load-face-attributes ()
+  ;; Set the font size
+  (set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
 
-;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 260)
+  ;; Set the fixed pitch face
+  (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 260)
 
-;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 295 :weight 'regular)
+  ;; Set the variable pitch face
+  (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 295 :weight 'regular))
+
+(defun klvdmy/load-face-attributes-to-frame (frame)
+  (select-frame frame)
+  (klvdmy/load-face-attributes))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions #'klvdmy/load-face-attributes-to-frame)
+  (klvdmy/load-face-attributes))
 
 ;; Initialize package sources
 (require 'package)
