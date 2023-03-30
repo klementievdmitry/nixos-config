@@ -143,7 +143,7 @@ in
 	        {
 		  "type" = "ladspa";
 		  "name" = "rnnoise";
-		  "plugin" = "/path/to/librnnoise_ladspa.so";
+		  "plugin" = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 		  "label" = "noise_suppressor_mono";
 		  "control" = {
 		    "VAD Threshold (%)" = 50.0;
