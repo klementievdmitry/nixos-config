@@ -39,6 +39,9 @@
       remmina
       discord
 
+      # Disk management
+      gparted
+
       # File management
       gnome.file-roller
       okular
