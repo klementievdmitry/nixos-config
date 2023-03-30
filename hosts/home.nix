@@ -28,6 +28,8 @@
       plex-media-player
       vlc
       stremio
+      alsa-utils
+      pulseaudio
 
       # Bluetooth
       blueman
