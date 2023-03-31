@@ -6,6 +6,7 @@
     heroic
     prismlauncher
     retroarchFull
+    protonup-ng
   ];
 
   programs = {
