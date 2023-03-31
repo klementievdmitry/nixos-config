@@ -14,7 +14,7 @@
 
 ** Partitioning
 
-|                      | Label | Size         | File System |
-| Boot partition       | boot  | ~1G          | vfat        |
-| Filesystem partition | nixos | 300G or more | ext4        |
-| Swap partition       | swap  | Any          | swap        |
+|                      | Label | Size         | File System | Mount point        |
+| Boot partition       | boot  | ~1G          | vfat        | /boot or /boot/efi |
+| Filesystem partition | nixos | 300G or more | ext4        | /                  |
+| Swap partition       | swap  | Any          | swap        |                    |
