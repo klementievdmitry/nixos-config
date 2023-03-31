@@ -7,6 +7,7 @@
     prismlauncher
     retroarchFull
     protonup-ng
+    protontricks
   ];
 
   programs = {
