@@ -7,7 +7,7 @@
     [ ( import ../../modules/sway/default.nix ) ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linux_xanmod_latest;
 
     loader = {
       efi = {
