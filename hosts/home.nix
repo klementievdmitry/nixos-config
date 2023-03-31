@@ -22,6 +22,9 @@
       ranger
       tldr
 
+      # System utils
+      inxi
+
       # Video/Audio
       feh
       mpv

@@ -56,6 +56,14 @@
     driSupport32Bit = true;
   };
 
+  # System76
+  hardware.system76 = {
+    enableAll = true;
+    power-daemon.enable = true;
+    firmware-daemon.enable = true;
+    kernel-modules.enable = true;
+  };
+
   # File system
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
