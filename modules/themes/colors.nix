@@ -15,7 +15,7 @@
       cyan      = "6cdcf7";
       dark-cyan = "5699af";
       emphasis  = "50536b";
-      text      = "dfdfdf";
+      text      = "999999";
       text-alt  = "b2b2b2";
       fg        = "abb2bf";
       bg        = "282c34";

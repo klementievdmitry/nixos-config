@@ -50,7 +50,7 @@ in
           padding: 4px 10px;
           margin: 4px;
           border: 3px solid #${text};
-          border-radius: 5px;
+          border-radius: 0px;
           color: #dfdfdf;
           font-weight: bold;
           background-color: #${bg};

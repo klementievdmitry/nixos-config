@@ -42,14 +42,14 @@
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
     rocm-opencl-runtime
-    mesa
-    amdvlk
+    #mesa
+    #amdvlk
   ];
 
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.mesa
-    driversi686Linux.amdvlk
-  ];
+  #hardware.opengl.extraPackages32 = with pkgs; [
+  #  driversi686Linux.mesa
+  #  driversi686Linux.amdvlk
+  #];
 
   hardware.opengl = {
     driSupport = true;
