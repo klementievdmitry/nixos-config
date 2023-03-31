@@ -6,7 +6,7 @@
 | Notifications     | Wired     |
 | Lock screen       | Swaylock  |
 | Wallpapers        | Hyprpaper |
-| Terminal Emulator | Wezterm   |
+| Terminal Emulator | Alacritty |
 
 /I don't use wallpapers with Sway/
 
