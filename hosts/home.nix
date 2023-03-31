@@ -12,10 +12,11 @@
       # Development
       rustup
       rust-analyzer
-      clang
+      llvmPackages_9.libclang
+      llvmPackages_9.libcxx
 
       # Terminal
-      wezterm
+      alacritty
       btop
       nitch
       ranger
@@ -30,6 +31,7 @@
       stremio
       alsa-utils
       pulseaudio
+      rnnoise-plugin
 
       # Bluetooth
       blueman

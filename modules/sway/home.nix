@@ -6,13 +6,13 @@
     systemdIntegration = true;                          # Enable sway-session.target to link to graphical-session.target for systemd
     config = rec {                                      # Sway configuration
       modifier = "Mod4";
-      terminal = "${pkgs.wezterm}/bin/wezterm";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.wofi}/bin/wofi --show drun";
 
       startup = [                                       # Run commands on Sway startup
         {command = "${pkgs.autotiling}/bin/autotiling"; always = true;} # Tiling Script
-	{command = "${pkgs.wired}/bin/wired"; always = false;} # Notifications
-	{command = "${pkgs.blueman}/bin/blueman-applet"; always = false;}
+	      {command = "${pkgs.wired}/bin/wired"; always = false;} # Notifications
+	      {command = "${pkgs.blueman}/bin/blueman-applet"; always = false;}
       ];
 
       bars = [];                                        # No bar because using Waybar
@@ -85,8 +85,8 @@
         "Alt+1" = "workspace number 1";                 # Open workspace x
         "Alt+2" = "workspace number 2";
         "Alt+3" = "workspace number 3";
-        #"Alt+4" = "workspace number 4";
-        #"Alt+5" = "workspace number 5";
+        "Alt+4" = "workspace number 4";
+        "Alt+5" = "workspace number 5";
 
         "Alt+Shift+Left" = "move container to workspace prev, workspace prev";    # Move container to next available workspace and focus
         "Alt+Shift+Right" = "move container to workspace next, workspace next";

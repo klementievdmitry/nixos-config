@@ -48,7 +48,7 @@ in
 
   environment = {
     variables = {
-      TERMINAL = "wezterm";
+      TERMINAL = "alacritty";
       EDITOR = "emacs";
       VISUAL = "emacs";
     };
@@ -60,7 +60,7 @@ in
       pciutils
       usbutils
       wget
-      rnnoise-plugin
+      mc # Terminal file manager
     ];
 
     etc = {

@@ -318,6 +318,61 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
 
+(use-package lsp-treemacs
+  :after lsp)
+
+(use-package lsp-ivy
+  :after lsp)
+
+;; Dap mode for debugging
+(use-package dap-mode
+  ;; Uncomment the config below if you want all UI panes to be hidden by default!
+  ;; :custom
+  ;; (lsp-enable-dap-auto-configure nil)
+  ;; :config
+  ;; (dap-ui-mode 1)
+  :commands dap-debug
+  :config
+  ;; Set up Node debugging
+  (require 'dap-node)
+  (dap-node-setup) ;; Automatically installs Node debug adapter if needed
+
+  ;; Bind `C-c l d` to `dap-hydra` for easy access
+  (general-define-key
+    :keymaps 'lsp-mode-map
+    :prefix lsp-keymap-prefix
+    "d" '(dap-hydra t :wk "debugger")))
+
+;; Nix mode
+(use-package nix-mode
+  :mode "\\.nix\\'"
+  :hook (nix-mode . lsp-deferred))
+
+(use-package nix-drv-mode
+  :ensure nix-mode
+  :mode "\\.drv\\'"
+  :hook (nix-drv-mode . lsp-deferred))
+
+(use-package nix-shell
+  :ensure nix-mode
+  :commands (nix-shell-unpack nix-shell-configure nix-shell-build))
+
+(use-package nix-repl
+  :ensure nix-mode
+  :commands (nix-repl))
+
+;; TypeScript mode
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :custom
+  (typescript-indent-level 2))
+
+;; C/C++ mode
+;; Manually adding C/C++ LSP hooks
+(add-hook 'c-mode-hook 'lsp-deferred)
+(add-hook 'c++-mode-hook 'lsp-deferred)
+
 ;; Company mode - Emacs autocompletion
 (use-package company
   :after lsp-mode
@@ -332,27 +387,5 @@
 
 (use-package company-box
   :hook (company-mode . company-box-mode))
-
-;; Nix mode
-(use-package nix-mode
-  :mode "\\.nix\\'"
-  :hook (nix-mode . lsp-deferred))
-(use-package nix-drv-mode
-  :ensure nix-mode
-  :mode "\\.drv\\'"
-  :hook (nix-drv-mode . lsp-deferred))
-(use-package nix-shell
-  :ensure nix-mode
-  :commands (nix-shell-unpack nix-shell-configure nix-shell-build))
-(use-package nix-repl
-  :ensure nix-mode
-  :commands (nix-repl))
-
-;; TypeScript mode
-(use-package typescript-mode
-  :mode "\\.ts\\'"
-  :hook (typescript-mode . lsp-deferred)
-  :custom
-  (typescript-indent-level 2))
 
 ;;; init.el ends here

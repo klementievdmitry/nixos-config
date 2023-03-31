@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "amdgpu" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -21,6 +21,8 @@
     "amdgpu.si_support=1"
     "radeon.cik_support=0"
     "amdgpu.cik_support=1"
+    "amdgpu.dc=1"
+    "amdgpu.dpm=1"
   ];
 
 
@@ -37,13 +39,18 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
   ];
 
-  # OpenCL
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
     rocm-opencl-runtime
+    mesa
+    amdvlk
   ];
 
-  # Vulkan
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.mesa
+    driversi686Linux.amdvlk
+  ];
+
   hardware.opengl = {
     driSupport = true;
     driSupport32Bit = true;
