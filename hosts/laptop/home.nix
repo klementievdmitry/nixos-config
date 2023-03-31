@@ -2,11 +2,11 @@
 
 {
   imports =
-    [ ../../modules/sway/home.nix ];
+    [ ../../modules/sway/home.nix ]; # Sway WM
 
   home = {
     packages = with pkgs; [
-      libreoffice
+      libreoffice # Office programs
     ];
   };
 

@@ -2,12 +2,12 @@
 
 {
   imports =
-    [ ( import ./hardware-configuration.nix ) ] ++
-    [ ( import ../../modules/programs/games.nix ) ] ++
-    [ ( import ../../modules/sway/default.nix ) ];
+    [ ( import ./hardware-configuration.nix ) ] ++ # Hardware conf
+    [ ( import ../../modules/programs/games.nix ) ] ++ # Games
+    [ ( import ../../modules/sway/default.nix ) ]; # Sway WM
 
   boot = {
-    kernelPackages = pkgs.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
     loader = {
       efi = {
