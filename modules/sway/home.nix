@@ -13,6 +13,7 @@
         {command = "${pkgs.autotiling}/bin/autotiling"; always = true;} # Tiling Script
 	      {command = "${pkgs.wired}/bin/wired"; always = false;} # Notifications
 	      {command = "${pkgs.blueman}/bin/blueman-applet"; always = false;}
+        {command = "--no-startup-id ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; always = false;}
       ];
 
       bars = [];                                        # No bar because using Waybar

@@ -7,7 +7,7 @@
     [ ( import ../../modules/sway/default.nix ) ]; # Sway WM
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
 
     loader = {
       efi = {
@@ -23,4 +23,11 @@
       timeout = 1;
     };
   };
+
+  #programs.corectrl = {
+  #  enable = true;
+  #  gpuOverclock.ppfeaturemask = "0xffffffff";
+  #};
+
+  security.polkit.enable = true;
 }

@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "amdgpu" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -42,14 +42,7 @@
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
     rocm-opencl-runtime
-    #mesa
-    #amdvlk
   ];
-
-  #hardware.opengl.extraPackages32 = with pkgs; [
-  #  driversi686Linux.mesa
-  #  driversi686Linux.amdvlk
-  #];
 
   hardware.opengl = {
     driSupport = true;
@@ -57,12 +50,12 @@
   };
 
   # System76
-  hardware.system76 = {
-    enableAll = true;
-    power-daemon.enable = true;
-    firmware-daemon.enable = true;
-    kernel-modules.enable = true;
-  };
+  # hardware.system76 = {
+  #  enableAll = true;
+  #  power-daemon.enable = true;
+  #  firmware-daemon.enable = true;
+  #  kernel-modules.enable = true;
+  #};
 
   # File system
   fileSystems."/" =

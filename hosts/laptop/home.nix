@@ -7,7 +7,7 @@
   home = {
     packages = with pkgs; [
       libreoffice # Office programs
-      linuxKernel.packages.linux_xanmod_latest.system76-power
+      lm_sensors
     ];
   };
 

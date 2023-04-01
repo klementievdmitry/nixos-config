@@ -24,7 +24,9 @@
 
       # System utils
       inxi
-
+      corectrl
+      polkit_gnome
+      
       # Video/Audio
       feh
       mpv
