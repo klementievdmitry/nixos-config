@@ -21,8 +21,7 @@
 
       # System utils
       inxi
-      corectrl
-      polkit_gnome
+      lm_sensors
       
       # Video/Audio
       feh

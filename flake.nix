@@ -23,14 +23,9 @@
       wired = {
         url = "github:Toqozz/wired-notify";
       };
-
-      ironbar = {
-        url = "github:JakeStanger/ironbar";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, wired, ironbar, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, wired, ... }:
     let
       user = "klvdmy";
     in
@@ -38,7 +33,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprland hyprpaper wired ironbar;
+          inherit inputs nixpkgs user home-manager hyprland hyprpaper wired;
         }
       );
     };

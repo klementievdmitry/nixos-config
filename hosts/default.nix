@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, hyprland, hyprpaper, wired, ironbar, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, hyprland, hyprpaper, wired, ... }:
 
 let
   system = "x86_64-linux";
@@ -14,7 +14,7 @@ in
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-        inherit inputs user system hyprland hyprpaper wired ironbar;
+        inherit inputs user system hyprland hyprpaper wired;
       host = {
         hostName = "laptop";
       };
@@ -35,7 +35,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            ironbar.homeManagerModules.default
+            hyprland.homeManagerModules.default
             ./home.nix
             ./laptop/home.nix
           ];
