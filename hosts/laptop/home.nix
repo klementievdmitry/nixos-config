@@ -7,7 +7,6 @@
   home = {
     packages = with pkgs; [
       libreoffice # Office programs
-      lm_sensors
     ];
   };
 
