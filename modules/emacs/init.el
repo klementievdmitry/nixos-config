@@ -382,4 +382,7 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+;; w3m
+(use-package w3m)
+
 ;;; init.el ends here

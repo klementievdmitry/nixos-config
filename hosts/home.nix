@@ -9,9 +9,12 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      # For emacs
+      w3m
+      
       # Development
       direnv
-      
+
       # Terminal
       alacritty
       btop
