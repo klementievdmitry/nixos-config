@@ -353,21 +353,6 @@
   :mode "\\.nix\\'"
   :hook (nix-mode . lsp-deferred))
 
-(use-package nix-drv-mode
-  :ensure nix-mode
-  :mode "\\.drv\\'"
-  :hook (nix-drv-mode . lsp-deferred))
-
-(use-package nix-shell
-  :ensure nix-mode
-  :commands (nix-shell-unpack nix-shell-configure nix-shell-build))
-
-(use-package nix-repl
-  :ensure nix-mode
-  :commands (nix-repl))
-
-(use-package nix-buffer)
-
 ;; TypeScript mode
 (use-package typescript-mode
   :mode "\\.ts\\'"
