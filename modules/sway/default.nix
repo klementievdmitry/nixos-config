@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ../programs/waybar.nix ] ++
+    [ ../programs/ironbar.nix ] ++
     [ ../programs/wired.nix ] ++
     [ ../programs/hyprpaper.nix ] ++
     [ ../programs/swaylock.nix ];

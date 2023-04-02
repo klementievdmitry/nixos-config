@@ -1,12 +1,14 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, home-manager, inputs, ironbar, user, ... }:
 
 {
-  programs.ironbar = {
-    enable = true;
-    package = inputs.ironbar;
-    #features = [ ];
+  home-manager.users.${user} = {
+    programs.ironbar = {
+      enable = true;
+      package = inputs.ironbar;
+      #features = [ ];
 
-    #config = {};
-    #style = "";
+      #config = {};
+      #style = "";
+    };  
   };
 }
