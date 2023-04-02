@@ -18,3 +18,5 @@
    "<escape>" 'keyboard-escape-quit ; Make ESC quit prompts
    "C-M-j" 'counsel-switch-buffer
    "C-s" 'counsel-grep-or-swiper))
+
+(provide 'init-general)

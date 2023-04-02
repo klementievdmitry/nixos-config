@@ -30,3 +30,5 @@
   :after evil
   :config
   (evil-collection-init))
+
+(provide 'init-evil)

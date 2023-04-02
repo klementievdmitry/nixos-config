@@ -21,18 +21,16 @@
 
 (provide 'init)
 
-;; For multiple files
-(defconst user-init-dir
-  (cond ((boundp 'user-emacs-directory)
-         user-emacs-directory)
-        ((boundp 'user-init-directory)
-         user-init-directory)
-        (t "~/.emacs.d/")))
+;; Load path
+;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
+(defun update-load-path ()
+  "Update `load-path'."
+  (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
-;; File loading function
-(defun load-user-file (file)
-  (interactive "f")
-  (load-file (expand-file-name file user-init-dir)))
+;(advice-add #'package-initialize :after #'update-load-path)
+;(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
+
+(update-load-path)
 
 ;; Bootstrap
 (require 'init-bootstrap)
