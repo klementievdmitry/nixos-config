@@ -37,9 +37,6 @@
 ;; Bootstrap
 (load-user-file "bootstrap.el")
 
-;; Commands completion
-(load-user-file "commands-completion.el")
-
 ;; UI
 (load-user-file "ui.el")
 
