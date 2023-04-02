@@ -35,10 +35,10 @@
   (load-file (expand-file-name file user-init-dir)))
 
 ;; Bootstrap
-(load-user-file "bootstrap.el")
+(require 'init-bootstrap)
 
 ;; UI
-(load-user-file "ui.el")
+(require 'init-ui)
 
 ;; Use Ivy and Counsel for completions
 (use-package ivy
@@ -89,10 +89,10 @@
   ([remap describe-key] . helpful-key))
 
 ;; General keybindings
-(load-user-file "keybindings/general.el")
+(require 'init-general)
 
 ;; Evil mode
-(load-user-file "evil.el")
+(require 'init-evil)
 
 ;; Hydra
 (use-package hydra ; So cool package for me
@@ -108,10 +108,10 @@
     "ts" '(hydra-text-scale/body :which-key "scale text")))
 
 ;; Project (projectile/magit/forge)
-(load-user-file "project.el")
+(require 'init-project)
 
 ;; Org mode
-(load-user-file "org.el")
+(require 'init-org)
 
 ;; LSP mode
 (defun klvdmy/lsp-mode-setup ()
