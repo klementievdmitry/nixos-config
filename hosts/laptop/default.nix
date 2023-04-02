@@ -8,8 +8,8 @@
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-    boot.initrd.kernelModules = [ "amdgpu" ];
-    boot.kernelParams = [
+    initrd.kernelModules = [ "amdgpu" ];
+    kernelParams = [
       # For my laptop
       "nvme_core.default_ps_max_latency_us=0"
 
