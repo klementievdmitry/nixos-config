@@ -5,6 +5,8 @@ in
 {
   networking.networkmanager.enable = true;
 
+  stdenv = pkgs.clangStdenv;
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
