@@ -8,6 +8,12 @@
     retroarchFull
     protonup-ng
     protontricks
+    #wineWowPackages.staging
+    #(wine.override { wineBuild = "wine64" })
+    #wine
+    #wineWowPackages.stable
+    wineWowPackages.waylandFull
+    winetricks
   ];
 
   programs = {

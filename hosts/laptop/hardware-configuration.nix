@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     # For my laptop
@@ -47,6 +47,14 @@
   hardware.opengl = {
     driSupport = true;
     driSupport32Bit = true;
+  };
+
+  services.auto-cpufreq.enable = true;
+
+  powerManagement = {
+    cpufreq.min = 1400000;
+    cpufreq.max = 2100000;
+    cpuFreqGovernor = "performance";
   };
 
   # System76

@@ -5,8 +5,6 @@ in
 {
   networking.networkmanager.enable = true;
 
-  stdenv = pkgs.clangStdenv;
-
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
@@ -29,7 +27,6 @@ in
   };
 
   security.rtkit.enable = true;
-  security.polkit.enable = true;
 
   fonts.fonts = with pkgs; [
     carlito

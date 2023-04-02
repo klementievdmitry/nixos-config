@@ -380,6 +380,10 @@
 (add-hook 'c-mode-hook 'lsp-deferred)
 (add-hook 'c++-mode-hook 'lsp-deferred)
 
+;; CMake mode
+(use-package cmake-mode
+  :hook (cmake-mode . lsp-deferred))
+
 ;; Company mode - Emacs autocompletion
 (use-package company
   :after lsp-mode
