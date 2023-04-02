@@ -38,10 +38,10 @@
   (set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
 
   ;; Set the fixed pitch face
-  (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 260)
+  (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 200)
 
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 295 :weight 'regular))
+  (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 235 :weight 'regular))
 
 (defun klvdmy/load-face-attributes-to-frame (frame)
   (select-frame frame)
@@ -302,6 +302,11 @@
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
+;; Direnv
+(use-package direnv
+  :config
+  (direnv-mode))
+
 ;; LSP mode
 (defun klvdmy/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
@@ -360,6 +365,8 @@
 (use-package nix-repl
   :ensure nix-mode
   :commands (nix-repl))
+
+(use-package nix-buffer)
 
 ;; TypeScript mode
 (use-package typescript-mode

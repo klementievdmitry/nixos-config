@@ -10,10 +10,9 @@
 
     packages = with pkgs; [
       # Development
-      rustup
+      direnv
+      rust
       rust-analyzer
-      llvmPackages_9.libclang
-      llvmPackages_9.libcxx
 
       # Terminal
       alacritty
