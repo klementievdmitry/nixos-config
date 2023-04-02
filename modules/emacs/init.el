@@ -353,13 +353,6 @@
   :mode "\\.nix\\'"
   :hook (nix-mode . lsp-deferred))
 
-;; TypeScript mode
-(use-package typescript-mode
-  :mode "\\.ts\\'"
-  :hook (typescript-mode . lsp-deferred)
-  :custom
-  (typescript-indent-level 2))
-
 ;; C/C++ mode
 ;; Manually adding C/C++ LSP hooks
 (add-hook 'c-mode-hook 'lsp-deferred)
