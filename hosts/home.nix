@@ -11,9 +11,7 @@
     packages = with pkgs; [
       # Development
       direnv
-      rust
-      rust-analyzer
-
+      
       # Terminal
       alacritty
       btop
@@ -74,6 +72,8 @@
   };
 
   services = {
+    lorri.enable = true;
+
     # Enable Emacs as Daemon
     # using home-manager instead of native (for doom support)
     emacs = {
