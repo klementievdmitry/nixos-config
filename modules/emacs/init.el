@@ -357,10 +357,15 @@
 ;; Manually adding C/C++ LSP hooks
 (add-hook 'c-mode-hook 'lsp-deferred)
 (add-hook 'c++-mode-hook 'lsp-deferred)
+(add-hook 'c-or-c++-mode-hook 'lsp-deferred)
 
 ;; CMake mode
 (use-package cmake-mode
   :hook (cmake-mode . lsp-deferred))
+
+;; Python mode
+(use-package python-mode
+  :hook (python-mode . lsp-deferred))
 
 ;; Company mode - Emacs autocompletion
 (use-package company
