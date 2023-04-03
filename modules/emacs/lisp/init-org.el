@@ -1,4 +1,4 @@
-;; Org mode
+; Org mode
 (defun klvdmy/org-mode-setup ()
   (org-indent-mode)
   (variable-pitch-mode 1)
