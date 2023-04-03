@@ -62,6 +62,9 @@
 (require 'init-general)
 (require 'useful-keybindings)
 
+;; Project(projectile/magit/forge)
+(require 'init-project)
+
 ;; Org mode
 (require 'init-org)
 
