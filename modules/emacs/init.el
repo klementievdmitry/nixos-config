@@ -1,4 +1,4 @@
-;; Load pat;; Bootstrap Straight.el
+;; Bootstrap Straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -11,6 +11,13 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+(setq straight-recipe-repositories '(org-elpa
+				     melpa
+				     gnu-elpa-mirror
+				     nongnu-elpa
+				     el-get
+				     emacsmirror-mirror))
 
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path ()
@@ -38,6 +45,9 @@
 (require 'ui-builtin)
 (require 'ui-face)
 (require 'ui-extern)
+
+;; Dired
+(require 'init-dired)
 
 ;; Direnv
 (use-package direnv
