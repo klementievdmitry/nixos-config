@@ -2,7 +2,7 @@
 
 {
   imports =
-    ( import ../modules/programs );
+    (import ../modules/programs);
 
   home = {
     username = "${user}";
@@ -11,7 +11,7 @@
     packages = with pkgs; [
       # For emacs
       w3m
-      
+
       # Development
       direnv
 
@@ -25,7 +25,7 @@
       # System utils
       inxi
       lm_sensors
-      
+
       # Video/Audio
       feh
       mpv
@@ -46,7 +46,8 @@
       google-chrome
       remmina
       discord
-
+      tor-browser-bundle-bin
+      
       # Disk management
       #gparted
       btrfs-progs
@@ -92,7 +93,8 @@
     };
   };
 
-  gtk = {                                     # Theming
+  gtk = {
+    # Theming
     enable = true;
     theme = {
       name = "Dracula";
@@ -111,10 +113,11 @@
     font = {
       #name = "JetBrains Mono Medium";
       name = "FiraCode Nerd Font Mono Medium";
-    };                                        # Cursor is declared under home.pointerCursor
+    }; # Cursor is declared under home.pointerCursor
   };
 
-  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
+  systemd.user.targets.tray = {
+    # Tray.target can not be found when xsession is not enabled. This fixes the issue.
     Unit = {
       Description = "Home Manager System Tray";
       Requires = [ "graphical-session-pre.target" ];

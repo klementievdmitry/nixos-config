@@ -6,5 +6,7 @@ pkgs.mkShell {
 
     # keep this line if you use bash
     pkgs.bashInteractive
+
+    pkgs.rnix-lsp
   ];
 }

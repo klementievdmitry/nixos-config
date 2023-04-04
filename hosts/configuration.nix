@@ -94,79 +94,79 @@ in
       jack.enable = true;
 
       config.pipewire = {
-      	"context.properties" = {
-	  "log.level" = 0;
-	};
+        "context.properties" = {
+          "log.level" = 0;
+        };
 
-	"context.spa-libs" = {
-	  "audio.convert.*" = "audio/libspa-audioconvert";
-	  "support.*" = "support/libspa-support";
-	};
+        "context.spa-libs" = {
+          "audio.convert.*" = "audio/libspa-audioconvert";
+          "support.*" = "support/libspa-support";
+        };
 
         "context.modules" = [
-	{
-	  name = "libpipewire-module-rtkit";
-          args = {
-            "nice.level" = -11;
-            "rt.prio" = 88;
-            "rt.time.soft" = 200000;
-            "rt.time.hard" = 200000;
-          };
-          flags = [ "ifexists" "nofail" ];
-        }
-        { name = "libpipewire-module-protocol-native"; }
-        { name = "libpipewire-module-profiler"; }
-        { name = "libpipewire-module-metadata"; }
-        { name = "libpipewire-module-spa-device-factory"; }
-        { name = "libpipewire-module-spa-node-factory"; }
-        { name = "libpipewire-module-client-node"; }
-        { name = "libpipewire-module-client-device"; }
-        {
-          name = "libpipewire-module-portal";
-          flags = [ "ifexists" "nofail" ];
-        }
-        {
-          name = "libpipewire-module-access";
-          args = {};
-        }
-        { name = "libpipewire-module-adapter"; }
-        { name = "libpipewire-module-link-factory"; }
-        { name = "libpipewire-module-session-manager"; }
-	{
-	  name = "libpipewire-module-filter-chain";
-	  args = {
-	    "node.description" = "Noise Canceling source";
-	    "media.name" = "Noise Canceling source";
-	    "filter.graph" = {
-	      "nodes" = [
-	        {
-		  "type" = "ladspa";
-		  "name" = "rnnoise";
-		  "plugin" = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-		  "label" = "noise_suppressor_mono";
-		  "control" = {
-		    "VAD Threshold (%)" = 50.0;
-		    "VAD Grace Period (ms)" = 200;
-		    "Retroactive VAD Grace (ms)" = 0;
-		  };
-		}
-	      ];
-	    };
+          {
+            name = "libpipewire-module-rtkit";
+            args = {
+              "nice.level" = -11;
+              "rt.prio" = 88;
+              "rt.time.soft" = 200000;
+              "rt.time.hard" = 200000;
+            };
+            flags = [ "ifexists" "nofail" ];
+          }
+          { name = "libpipewire-module-protocol-native"; }
+          { name = "libpipewire-module-profiler"; }
+          { name = "libpipewire-module-metadata"; }
+          { name = "libpipewire-module-spa-device-factory"; }
+          { name = "libpipewire-module-spa-node-factory"; }
+          { name = "libpipewire-module-client-node"; }
+          { name = "libpipewire-module-client-device"; }
+          {
+            name = "libpipewire-module-portal";
+            flags = [ "ifexists" "nofail" ];
+          }
+          {
+            name = "libpipewire-module-access";
+            args = { };
+          }
+          { name = "libpipewire-module-adapter"; }
+          { name = "libpipewire-module-link-factory"; }
+          { name = "libpipewire-module-session-manager"; }
+          {
+            name = "libpipewire-module-filter-chain";
+            args = {
+              "node.description" = "Noise Canceling source";
+              "media.name" = "Noise Canceling source";
+              "filter.graph" = {
+                "nodes" = [
+                  {
+                    "type" = "ladspa";
+                    "name" = "rnnoise";
+                    "plugin" = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+                    "label" = "noise_suppressor_mono";
+                    "control" = {
+                      "VAD Threshold (%)" = 50.0;
+                      "VAD Grace Period (ms)" = 200;
+                      "Retroactive VAD Grace (ms)" = 0;
+                    };
+                  }
+                ];
+              };
 
-	    "capture.props" = {
-	      "node.name" = "capture.rnnoise_source";
-	      "node.passive" = true;
-	      "audio.rate" = 48000;
-	    };
+              "capture.props" = {
+                "node.name" = "capture.rnnoise_source";
+                "node.passive" = true;
+                "audio.rate" = 48000;
+              };
 
-	    "playback.props" = {
-	      "node.name" = "rnnoise_source";
-	      "media.class" = "Audio/Source";
-	      "audio.rate" = 48000;
-	    };
-	  };
-	}
-	];
+              "playback.props" = {
+                "node.name" = "rnnoise_source";
+                "media.class" = "Audio/Source";
+                "audio.rate" = 48000;
+              };
+            };
+          }
+        ];
       };
     };
 
@@ -176,6 +176,19 @@ in
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa
       '';
+    };
+
+    tor = {
+      enable = true;
+      client.enable = true;
+      settings = {
+        UseBridges = true;
+        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/obfs4proxy}";
+        Bridge = ''
+          obfs4 37.120.171.27:8444 2E3A2D0A3792C6C74ADCC9B5EAF182E84119AC37 cert=2jMQ/CfVmY/fAuyp3I+7kq83P2xG/A1+Ga+qd2jLM18HC9fTiERSGvoM7JmzdTFKZYXvXQ iat-mode=0
+          obfs4 187.75.226.94:8988 AF19883740E44E541795020EC59EC5F746851E19 cert=/n/ygNigvyPr5LVJfJoKd3JAuiSi9UnY61FzOCgqdCi1HD7WIGw6jR/mzLyJzhaLziT/JQ iat-mode=0
+        '';
+      };
     };
 
     flatpak.enable = true;
@@ -219,10 +232,12 @@ in
     overlays = [
       (self: super: {
         discord = super.discord.overrideAttrs (
-          _: { src = builtins.fetchTarball {
-            url = "https://discord.com/api/download?platform=linux&format=tar.gz";
-            sha256 = "12yrhlbigpy44rl3icir3jj2p5fqq2ywgbp5v3m1hxxmbawsm6wi";
-          }; }
+          _: {
+            src = builtins.fetchTarball {
+              url = "https://discord.com/api/download?platform=linux&format=tar.gz";
+              sha256 = "12yrhlbigpy44rl3icir3jj2p5fqq2ywgbp5v3m1hxxmbawsm6wi";
+            };
+          }
         );
       })
     ];

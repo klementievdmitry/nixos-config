@@ -77,3 +77,4 @@
 (require 'init-cc)
 (require 'init-cmake)
 (require 'init-python)
+(require 'init-rust)

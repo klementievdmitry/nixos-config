@@ -7,7 +7,7 @@
     [ ( import ../../modules/sway/default.nix ) ]; # Sway WM
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = [ "amdgpu" "k10temp" ];
     kernelParams = [
       # For my laptop
@@ -36,6 +36,12 @@
       timeout = 1;
     };
   };
+  systemd.services.turn-off-amd-turbo-mode = {
+    script = ''
+      echo "0" | tee /sys/devices/system/cpu/cpufreq/boost
+    '';
+    wantedBy = [ "multi-user.target" ];
+  };
 
   # GPU Drivers
   services = {
@@ -63,9 +69,9 @@
   #services.auto-cpufreq.enable = true;
 
   powerManagement = {
-    #cpufreq.min = 1400000;
-    #cpufreq.max = 2100000;
-    cpuFreqGovernor = "performance";
+    cpufreq.min = 1400000;
+    cpufreq.max = 2100000;
+    cpuFreqGovernor = "powersave";
   };
 
   # System76

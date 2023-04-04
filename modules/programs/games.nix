@@ -14,6 +14,7 @@
     #wineWowPackages.stable
     wineWowPackages.waylandFull
     winetricks
+    mangohud
   ];
 
   programs = {
