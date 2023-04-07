@@ -1,4 +1,3 @@
 [
   ./wofi.nix
-  ./openvpn.nix
 ]

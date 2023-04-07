@@ -3,6 +3,9 @@
 let
 in
 {
+  imports =
+    [ ../modules/programs/openvpn.nix ];
+  
   networking.networkmanager.enable = true;
 
   users.users.${user} = {
