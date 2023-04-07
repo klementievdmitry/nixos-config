@@ -25,7 +25,8 @@
       # System utils
       inxi
       lm_sensors
-
+      gparted
+      
       # Video/Audio
       feh
       mpv
