@@ -12,12 +12,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq straight-recipe-repositories '(org-elpa
-				     melpa
-				     gnu-elpa-mirror
-				     nongnu-elpa
-				     el-get
-				     emacsmirror-mirror))
+(straight-pull-recipe-repositories)
 
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path ()

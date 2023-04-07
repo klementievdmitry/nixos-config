@@ -27,7 +27,7 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, wired, ... }:
     let
-      user = "klvdmy";
+      user = "kevdiy";
     in
     {
       nixosConfigurations = (
