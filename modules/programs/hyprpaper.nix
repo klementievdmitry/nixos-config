@@ -13,8 +13,8 @@
 
   home-manager.users.${user} = {
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload = ~/.config/wall.jpg
-      wallpaper = , ~/.config/wall.jpg
+      preload = ~/.config/wall.png
+      wallpaper = , ~/.config/wall.png
     '';
   };
 }
