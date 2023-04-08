@@ -6,5 +6,6 @@
     libsForQt5.kdenlive
     blender
     audacity
+    obs-studio
   ];
 }
