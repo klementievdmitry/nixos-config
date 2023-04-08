@@ -77,8 +77,37 @@ in
       enable = true;
     };
 
+    postgresql = {
+      enable = true;
+    };
+
+    matrix-synapse = {
+      enable = true;
+      settings = {
+        app_service_config_files = [
+          "/var/lib/mx-puppet-discord/discord-registration.yaml"
+        ];
+      };
+    };
+
     mx-puppet-discord = {
       enable = true;
+      settings = {
+        bridge = {
+          #bindAddress = "localhost";
+          #port = 8434;
+          domain = "ryveti.tld";
+          homeserverUrl = "https://public.endpoint.ryveti.tld";
+        };
+
+        provisioning = {
+          whitelist = [ "@ryveti:matrix.org" ];
+        };
+
+        relay = {
+          whitelist = [ "@ryveti:matrix.org" ];
+        };
+      };
     };
 
     avahi = {
