@@ -66,7 +66,7 @@
       zip
     ];
 
-    file.".config/wall.jpg".source = ../modules/themes/wall.jpg;
+    file.".config/wall.png".source = ../modules/themes/wall.png;
 
     # Emacs conf
     file.".config/emacs" = {
