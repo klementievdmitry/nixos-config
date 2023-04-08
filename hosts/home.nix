@@ -18,6 +18,7 @@
       nitch
       ranger
       tldr
+      helix
 
       # System utils
       inxi
