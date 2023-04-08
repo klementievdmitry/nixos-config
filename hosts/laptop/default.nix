@@ -3,6 +3,7 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
+    [ (import ../../modules/programs/forcreators.nix) ] ++ # Programs for creators (image/video/audio editing, 3d)
     [ (import ../../modules/programs/games.nix) ] ++ # Games
     [ (import ../../modules/sway/default.nix) ]; # Sway WM
 
