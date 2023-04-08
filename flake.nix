@@ -10,11 +10,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hyprland = {
-        url = "github:hyprwm/Hyprland";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
       hyprpaper = {
         url = "github:hyprwm/hyprpaper";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -25,15 +20,15 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, hyprpaper, wired, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprpaper, wired, ... }:
     let
-      user = "kevdiy";
+      user = "ryveti";
     in
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprland hyprpaper wired;
+          inherit inputs nixpkgs user home-manager hyprpaper wired;
         }
       );
     };

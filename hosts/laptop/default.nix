@@ -2,9 +2,9 @@
 
 {
   imports =
-    [ ( import ./hardware-configuration.nix ) ] ++ # Hardware conf
-    [ ( import ../../modules/programs/games.nix ) ] ++ # Games
-    [ ( import ../../modules/sway/default.nix ) ]; # Sway WM
+    [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
+    [ (import ../../modules/programs/games.nix) ] ++ # Games
+    [ (import ../../modules/sway/default.nix) ]; # Sway WM
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -41,6 +41,22 @@
       echo "0" | tee /sys/devices/system/cpu/cpufreq/boost
     '';
     wantedBy = [ "multi-user.target" ];
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (self: super: {
+        discord = super.discord.overrideAttrs (
+          _: {
+            src = builtins.fetchTarball {
+              url = "https://discord.com/api/download?platform=linux&format=tar.gz";
+              sha256 = "12yrhlbigpy44rl3icir3jj2p5fqq2ywgbp5v3m1hxxmbawsm6wi";
+            };
+          }
+        );
+      })
+    ];
   };
 
   # GPU Drivers

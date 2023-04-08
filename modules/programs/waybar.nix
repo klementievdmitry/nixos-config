@@ -1,13 +1,6 @@
-{ config, lib, pkgs, user, host, hyprland, system, ... }:
+{ config, lib, pkgs, user, host, system, ... }:
 
 {
-  # Overlay for Hyprland
-  #nixpkgs.overlays = [
-  #  (final: prev: {
-  #    waybar = hyprland.packages.${system}.waybar-hyprland;
-  #  })
-  #];
-
   environment.systemPackages = with pkgs; [
     waybar
   ];
@@ -117,9 +110,7 @@
           tray = { spacing = 5; };
 
           modules-left = with config;
-            if programs.hyprland.enable == true then
-              [ "custom/menu" "wlr/workspaces" ]
-            else if programs.sway.enable == true then
+            if programs.sway.enable == true then
               [ "sway/workspaces" "sway/window" "sway/mode" ]
             else [];
 

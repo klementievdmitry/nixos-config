@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, hyprland, hyprpaper, wired, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, hyprpaper, wired, ... }:
 
 let
   system = "x86_64-linux";
@@ -14,13 +14,12 @@ in
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-        inherit inputs user system hyprland hyprpaper wired;
+        inherit inputs user system hyprpaper wired;
       host = {
         hostName = "laptop";
       };
     };
     modules = [
-      hyprland.nixosModules.default
       ./laptop
       ./configuration.nix
 
@@ -35,7 +34,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            hyprland.homeManagerModules.default
             ./home.nix
             ./laptop/home.nix
           ];
@@ -47,13 +45,12 @@ in
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-        inherit inputs user system hyprland hyprpaper wired;
+        inherit inputs user system hyprpaper wired;
       host = {
         hostName = "desktop";
       };
     };
     modules = [
-      hyprland.nixosModules.default
       ./desktop
       ./configuration.nix
 
@@ -68,7 +65,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            hyprland.homeManagerModules.default
             ./home.nix
             ./desktop/home.nix
           ];

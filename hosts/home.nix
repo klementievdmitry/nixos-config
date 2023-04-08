@@ -9,9 +9,6 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-      # For emacs
-      w3m
-
       # Development
       direnv
 
@@ -26,6 +23,7 @@
       inxi
       lm_sensors
       gparted
+      btrfs-progs
       
       # Video/Audio
       feh
@@ -44,15 +42,13 @@
       # Apps
       appimage-run
       firefox
-      google-chrome
+      #google-chrome
+      chromium # Instead of google-chrome
       remmina
       discord
+      cinny # Matrix client (matrix messenger)
       tor-browser-bundle-bin
       
-      # Disk management
-      #gparted
-      btrfs-progs
-
       # File management
       gnome.file-roller
       okular

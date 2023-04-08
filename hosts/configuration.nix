@@ -3,9 +3,6 @@
 let
 in
 {
-  imports =
-    [ ../modules/programs/openvpn.nix ];
-  
   networking.networkmanager.enable = true;
 
   users.users.${user} = {
@@ -181,19 +178,6 @@ in
       '';
     };
 
-    tor = {
-      enable = true;
-      client.enable = true;
-      settings = {
-        UseBridges = true;
-        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/obfs4proxy}";
-        Bridge = ''
-          obfs4 37.120.171.27:8444 2E3A2D0A3792C6C74ADCC9B5EAF182E84119AC37 cert=2jMQ/CfVmY/fAuyp3I+7kq83P2xG/A1+Ga+qd2jLM18HC9fTiERSGvoM7JmzdTFKZYXvXQ iat-mode=0
-          obfs4 187.75.226.94:8988 AF19883740E44E541795020EC59EC5F746851E19 cert=/n/ygNigvyPr5LVJfJoKd3JAuiSi9UnY61FzOCgqdCi1HD7WIGw6jR/mzLyJzhaLziT/JQ iat-mode=0
-        '';
-      };
-    };
-
     flatpak.enable = true;
   };
 
@@ -228,22 +212,6 @@ in
       keep-outputs = true
       keep-derivations = true
     '';
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      (self: super: {
-        discord = super.discord.overrideAttrs (
-          _: {
-            src = builtins.fetchTarball {
-              url = "https://discord.com/api/download?platform=linux&format=tar.gz";
-              sha256 = "04r1yx6aqd4f4lq7wfcgs3jfpn40gz7gwajzai1aqz12ny78rs7z";
-            };
-          }
-        );
-      })
-    ];
   };
 
   system = {
