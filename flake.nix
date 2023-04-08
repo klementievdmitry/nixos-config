@@ -18,14 +18,9 @@
       wired = {
         url = "github:Toqozz/wired-notify";
       };
-
-      helix = {
-        url = "github:helix-editor/helix";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprpaper, wired, helix, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprpaper, wired, ... }:
     let
       user = "ryveti";
     in
@@ -33,7 +28,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager hyprpaper wired helix;
+          inherit inputs nixpkgs user home-manager hyprpaper wired;
         }
       );
     };
