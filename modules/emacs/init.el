@@ -12,7 +12,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-pull-recipe-repositories)
+;(straight-pull-recipe-repositories)
+(setq straight-vc-git-default-clone-depth 1)
 
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path ()

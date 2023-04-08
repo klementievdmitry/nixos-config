@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, wired, ... }:
+{ config, lib, pkgs, user, wired, system, ... }:
 
 {
   imports =
@@ -42,11 +42,16 @@
       # Apps
       appimage-run
       firefox
+      brave
       #google-chrome
-      chromium # Instead of google-chrome
+      #chromium # Instead of google-chrome
       remmina
       discord
-      cinny # Matrix client (matrix messenger)
+      #cinny # Matrix client (matrix messenger)
+      #cinny-desktop # Matrix client (matrix messenger)
+      element-desktop # Matrix client
+      #element-desktop-wayland # Matrix client for wayland
+      weechat # Chat client
       tor-browser-bundle-bin
       
       # File management
@@ -63,7 +68,7 @@
     file.".config/wall.jpg".source = ../modules/themes/wall.jpg;
 
     # Emacs conf
-    file.".emacs.d" = {
+    file.".config/emacs" = {
       source = ../modules/emacs;
       recursive = true;
     };

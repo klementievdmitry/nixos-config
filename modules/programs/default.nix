@@ -1,3 +1,4 @@
 [
   ./wofi.nix
+  ./helix.nix
 ]

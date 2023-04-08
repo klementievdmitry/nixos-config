@@ -62,6 +62,8 @@
         "${modifier}+e" = "exec ${pkgs.pcmanfm}/bin/pcmanfm"; # File Manager
         "${modifier}+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy"; # Lock Screen
 	"${modifier}+t" = "exec emacsclient -c"; # Run emacsclient
+        "${modifier}+b" = "exec brave"; # Run Brave browser
+        "${modifier}+m" = "exec element-desktop"; # Run Element
 
         "${modifier}+r" = "reload";                     # Reload environment
         "${modifier}+q" = "kill";                       # Kill container
