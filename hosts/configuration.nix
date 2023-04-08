@@ -4,8 +4,6 @@ let
 in
 {
   networking.networkmanager.enable = true;
-  #networking.wireless.iwd.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
 
   users.users.${user} = {
     isNormalUser = true;
