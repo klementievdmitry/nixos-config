@@ -8,8 +8,6 @@
 | Wallpapers        | Hyprpaper |
 | Terminal Emulator | Alacritty |
 
-/I don't use wallpapers with Sway/
-
 * Installing
 
 ** Partitioning
