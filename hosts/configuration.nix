@@ -4,6 +4,7 @@ let
 in
 {
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   users.users.${user} = {
     isNormalUser = true;
@@ -73,6 +74,10 @@ in
     gnome.gnome-keyring.enable = true;
 
     printing = {
+      enable = true;
+    };
+
+    mx-puppet-discord = {
       enable = true;
     };
 
