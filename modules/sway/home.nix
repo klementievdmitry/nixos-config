@@ -17,6 +17,7 @@
         { command = "${pkgs.blueman}/bin/blueman-applet"; always = false; }
         { command = "--no-startup-id ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; always = false; }
         { command = "${pkgs.hyprpaper}/bin/hyprpaper"; always = false; }
+        { command = "${pkgs.element-desktop}/bin/element-desktop --hidden"; always = true; }
       ];
 
       bars = [ ]; # No bar because using Waybar
