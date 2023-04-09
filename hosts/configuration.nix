@@ -3,6 +3,14 @@
 let
 in
 {
+  networking = {
+    enableIPv6 = false;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "wpa_supplicant";
+    };
+  };
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
