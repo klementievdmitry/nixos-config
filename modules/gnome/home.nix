@@ -26,6 +26,11 @@
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
+
+    "org/gnome/desktop/peripherals/keyboard" = {
+      repeat-interval = 50;
+      delay = 300;
+    };
   };
 
   home.packages = with pkgs; [
