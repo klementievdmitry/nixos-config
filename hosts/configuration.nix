@@ -85,27 +85,35 @@ in
       enable = true;
       settings = {
         app_service_config_files = [
-          "/var/lib/mx-puppet-discord/discord-registration.yaml"
+          "/var/lib/matrix-synapse/discord-registration.yaml"
         ];
       };
     };
 
-    mx-puppet-discord = {
+    matrix-appservice-discord = {
       enable = true;
       settings = {
         bridge = {
-          #bindAddress = "localhost";
-          #port = 8434;
-          domain = "ryveti.tld";
-          homeserverUrl = "https://public.endpoint.ryveti.tld";
+          domain = "matrix.org";
+          homeserverUrl = "https://matrix.org";
         };
 
-        provisioning = {
-          whitelist = [ "@ryveti:matrix.org" ];
+        database = {
+          filename = "discord.db";
+          connString = "socket:/run/postgresql?db=matrix-appservice-discord";
         };
 
-        relay = {
-          whitelist = [ "@ryveti:matrix.org" ];
+        room.defaultVisibility = "public";
+        
+        channel = {
+          namePattern = "[Discord] :guild :name";
+          deleteOptions = {
+            disableMessaging = false;
+            unserRoomAlias = true;
+            unlistFromDirectory = true;
+            setInviteOnly = true;
+            ghostsLeave = true;
+          };
         };
       };
     };
