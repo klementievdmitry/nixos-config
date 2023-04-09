@@ -4,16 +4,13 @@
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
-        "org.gnome.Settings.desktop"
-        "firefox.desktop"
+        "brave.desktop"
         "emacsclient.desktop"
         "com.obsproject.Studio.desktop"
-        "discord.desktop"
         "steam.desktop"
         "com.parsecgaming.parsec.desktop"
-        "blueman-manager.desktop"
-        "pavucontrol.desktop"
         "org.gnome.Console.desktop"
+        "element-desktop.desktop"
       ];
     };
 
@@ -30,6 +27,10 @@
     "org/gnome/desktop/peripherals/keyboard" = {
       repeat-interval = 50;
       delay = 300;
+    };
+
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
     };
   };
 
