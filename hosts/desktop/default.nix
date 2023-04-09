@@ -4,8 +4,8 @@
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
     [ (import ../../modules/programs/games.nix) ] ++ # Games
-    [ (import ../../modules/sway/default.nix) ]; # Sway WM
-
+    [ (import ../../modules/gnome/default.nix) ];
+  
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     extraModulePackages = with config.boot.kernelPackages; [

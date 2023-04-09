@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, inputs, home-manager, system, doom-emacs, ... }:
+{ config, lib, pkgs, user, inputs, home-manager, system, ... }:
 
 let
 in

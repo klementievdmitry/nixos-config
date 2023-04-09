@@ -1,9 +1,6 @@
-{ config, lib, pkgs, user, wired, system, ... }:
+{ config, lib, pkgs, user, system, ... }:
 
 {
-  imports =
-    (import ../modules/programs);
-
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
@@ -44,15 +41,9 @@
       appimage-run
       firefox
       brave
-      #google-chrome
-      #chromium # Instead of google-chrome
       remmina
       discord
-      #cinny # Matrix client (matrix messenger)
-      #cinny-desktop # Matrix client (matrix messenger)
       element-desktop # Matrix client
-      #element-desktop-wayland # Matrix client for wayland
-      weechat # Chat client
       tor-browser-bundle-bin
       
       # File management
@@ -65,8 +56,6 @@
       unrar
       zip
     ];
-
-    file.".config/wall.png".source = ../modules/themes/wall.png;
 
     # Emacs conf
     file.".config/emacs" = {

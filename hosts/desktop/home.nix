@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ../../modules/sway/home.nix ]; # Sway WM
+    [ ../../modules/gnome/home.nix ];
 
   home = {
     packages = with pkgs; [
