@@ -5,6 +5,7 @@ in
 {
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.dhcp = "dhcpcd";
 
   users.users.${user} = {
     isNormalUser = true;
@@ -265,4 +266,5 @@ in
     };
     stateVersion = "22.05";
   };
+
 }
