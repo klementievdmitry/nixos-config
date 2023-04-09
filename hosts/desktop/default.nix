@@ -7,8 +7,14 @@
     [ (import ../../modules/sway/default.nix) ]; # Sway WM
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    initrd.kernelModules = [ "amdgpu" "k10temp" ];
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    extraModulePackages = with config.boot.kernelPackages; [
+      rtl8188eus-aircrack
+    ];
+    initrd.kernelModules = [
+      "amdgpu"
+      "k10temp"
+    ];
     kernelParams = [
       # GPU Drivers
       "radeon.si_support=0"
@@ -35,7 +41,10 @@
   };
 
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
     overlays = [
       (self: super: {
         discord = super.discord.overrideAttrs (
@@ -71,6 +80,12 @@
   hardware.opengl = {
     driSupport = true;
     driSupport32Bit = true;
+  };
+
+  hardware = {
+    firmware = [
+      pkgs.rtl8192su-firmware
+    ];
   };
 
   security.polkit.enable = true;
