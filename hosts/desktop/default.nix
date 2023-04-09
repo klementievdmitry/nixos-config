@@ -6,10 +6,18 @@
     [ (import ../../modules/programs/games.nix) ] ++ # Games
     [ (import ../../modules/sway/default.nix) ]; # Sway WM
 
+  networking = {
+    dhcpcd = {
+      enable = true;
+    };
+    wireless.iwd = {
+      enable = true;
+    };
+  };
+
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     extraModulePackages = with config.boot.kernelPackages; [
-      rtl8188eus-aircrack
     ];
     initrd.kernelModules = [
       "amdgpu"
@@ -80,12 +88,6 @@
   hardware.opengl = {
     driSupport = true;
     driSupport32Bit = true;
-  };
-
-  hardware = {
-    firmware = [
-      pkgs.rtl8192su-firmware
-    ];
   };
 
   security.polkit.enable = true;

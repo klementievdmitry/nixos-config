@@ -7,6 +7,15 @@
     [ (import ../../modules/programs/games.nix) ] ++ # Games
     [ (import ../../modules/sway/default.nix) ]; # Sway WM
 
+  networking = {
+    dhcpcd = {
+      enable = true;
+    };
+    wireless.iwd = {
+      enable = true;
+    };
+  };
+  
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = [ "amdgpu" "k10temp" ];
