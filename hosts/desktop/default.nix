@@ -3,7 +3,7 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
-    [ (import ../../modules/hyprland/default.nix) ];
+    [ (import ../../modules/gnome/default.nix) ];
   
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;

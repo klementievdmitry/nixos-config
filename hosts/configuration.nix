@@ -80,10 +80,7 @@ in
     };
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-  ];
+  #xdg.portal.enable = true;
   
   services = {
     printing = {
