@@ -3,8 +3,7 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
-    [ (import ../../modules/programs/games.nix) ] ++ # Games
-    [ (import ../../modules/gnome/default.nix) ];
+    [ (import ../../modules/bspwm/default.nix) ];
   
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
@@ -14,15 +13,7 @@
       "amdgpu"
       "k10temp"
     ];
-    kernelParams = [
-      # GPU Drivers
-      "radeon.si_support=0"
-      "amdgpu.si_support=1"
-      "radeon.cik_support=0"
-      "amdgpu.cik_support=1"
-      "amdgpu.dc=1"
-      "amdgpu.dpm=1"
-    ];
+    kernelParams = [];
 
     loader = {
       efi = {
@@ -30,9 +21,9 @@
         efiSysMountPoint = "/boot/efi";
       };
 
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
+      grub = {
+        efiSupport = true;
+        device = "nodev";
       };
 
       timeout = 1;
@@ -82,14 +73,4 @@
   };
 
   security.polkit.enable = true;
-
-  # Forces a reset for specified bluetooth usb dongle.
-  systemd.services.fix-generic-usb-bluetooth-dongle = {
-    description = "Fixes for generic USB bluetooth dongle.";
-    wantedBy = [ "post-resume.target" ];
-    after = [ "post-resume.target" ];
-    script = builtins.readFile ./scripts/hack.usb.reset;
-    scriptArgs = "0a12:0001"; # Vendor ID and Product ID here
-    serviceConfig.Type = "oneshot";
-  };
 }

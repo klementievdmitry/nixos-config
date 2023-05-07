@@ -2,11 +2,9 @@
 
 {
   imports =
-    [ ../../modules/gnome/home.nix ];
-
+    [(../../modules/bspwm/home.nix)];
   home = {
     packages = with pkgs; [
-      #libreoffice # Office programs
     ];
   };
 

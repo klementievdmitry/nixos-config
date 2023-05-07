@@ -11,37 +11,6 @@ let
   lib = nixpkgs.lib;
 in
 {
-  laptop = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-        inherit inputs user system;
-      host = {
-        hostName = "laptop";
-      };
-    };
-    modules = [
-      ./laptop
-      ./configuration.nix
-
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit user;
-          host = {
-            hostName = "laptop";
-          };
-        };
-        home-manager.users.${user} = {
-          imports = [
-            ./home.nix
-            ./laptop/home.nix
-          ];
-        };
-      }
-    ];
-  };
-  
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = {

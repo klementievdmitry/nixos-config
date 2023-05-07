@@ -1,0 +1,514 @@
+#+title: SuorILove's Emacs Config
+#+author: SuorILove
+
+* BASIC SETUP
+
+- Electric pair mode (auto pairs)
+- Show paren mode
+  
+#+begin_src emacs-lisp
+  (electric-pair-mode t)
+  (show-paren-mode t)
+#+end_src
+
+- Auto-save directory
+
+#+begin_src emacs-lisp
+  ;; auto save path
+  (defvar autosave-dir (concat "~/auto-save" "/"))
+  (make-directory autosave-dir t)
+  (setq auto-save-file-name-transforms
+        `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t)))
+#+end_src
+
+
+* PACKAGE MANAGEMENT
+
+** Setup package.el to work with MELPA.
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "https://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+#+end_src
+
+
+** Installing use-package
+
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+#+end_src
+
+
+* FACE SETUP
+
+** Built-in UI
+
+#+begin_src emacs-lisp
+  ;; No startup message
+  (setq inhibit-startup-message t)
+
+  (scroll-bar-mode -1)    ; Disable visible scrollbar
+  (tool-bar-mode -1)      ; Disable toolbar
+  (tooltip-mode -1)       ; Disable tooltips
+  (set-fringe-mode 10)    ; Give some breathing room
+  (menu-bar-mode -1)      ; Disable the menu bar
+
+  ;; Set up the visible bell
+  (setq visible-bell t)
+#+end_src
+
+
+** Fonts
+
+#+begin_src emacs-lisp
+    (defun sil/load-face-attributes ()
+      ;; Set the font size
+      (set-face-attribute 'default nil :font "JetBrains Mono" :height 130)
+
+      ;; Set the fixed pitch face
+      (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 200)
+
+      ;; Set the variable pitch face
+      (set-face-attribute 'variable-pitch nil :font "JetBrains Mono" :height 235 :weight 'regular))
+
+    (defun sil/load-face-attributes-to-frame (frame)
+      (select-frame frame)
+      (sil/load-face-attributes))
+
+    (if (daemonp)
+	(add-hook 'after-make-frame-functions #'sil/load-face-attributes-to-frame)
+      (sil/load-face-attributes))
+
+    ;; Show line and column numbers
+    (column-number-mode)                 ; Show column number in modeline
+    (global-display-line-numbers-mode t) ; Show line numbers
+
+    ;; Hide line numbers in org/term/eshell modes
+    (dolist (mode '(org-mode-hook
+		    term-mode-hook
+		    eshell-mode-hook))
+      (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+
+** Colorscheme (theme)
+
+#+begin_src emacs-lisp
+  ;; All the icons
+  (use-package all-the-icons
+    :ensure t)
+
+  ;; Set custom theme
+  ;(use-package kaolin-themes
+  ;  :ensure t
+  ;  :config
+  ;  (load-theme 'kaolin-eclipse t)
+  ;  (kaolin-treemacs-theme))
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    (load-theme 'doom-gruvbox t))
+
+  ;; Doom modeline
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1)
+    :custom
+    (doom-modeline-height 30))
+
+  ;; Rainbow delimiters
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
+
+* EVIL MODE
+
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :custom
+    (evil-want-integration t)
+    (evil-want-keybinding nil)
+    (evil-vsplit-window-right t)
+    (evil-split-window-below t)
+    (evil-want-C-u-scroll t)
+    (evil-want-C-i-jump nil)
+
+    :config
+    (evil-mode)
+
+    :bind (:map evil-insert-state-map
+		;; Use C-g instead of Escape
+		("C-g" . 'evil-normal-state)
+		;; Use C-h instead of Backspace
+		("C-h" . 'evil-delete-backward-char-and-join)))
+
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init))
+#+end_src
+
+
+* ORG MODE
+
+#+begin_src emacs-lisp
+  (defun sil/org-mode-setup ()
+    (org-indent-mode)
+    (variable-pitch-mode 1)
+    (visual-line-mode 1))
+
+  (defun sil/org-font-setup ()
+    ;; Replace list hyphen with dot
+    (font-lock-add-keywords 'org-mode
+			    '(("^ *\\([-]\\) "
+			       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+    ;; Set faces for heading levels
+    (dolist (face '((org-level-1 . 1.2)
+		    (org-level-2 . 1.1)
+		    (org-level-3 . 1.05)
+		    (org-level-4 . 1.0)
+		    (org-level-5 . 1.1)
+		    (org-level-6 . 1.1)
+		    (org-level-7 . 1.1)
+		    (org-level-8 . 1.1)))
+      (set-face-attribute (car face) nil :font "JetBrains Mono" :weight 'regular :height (cdr face)))
+    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+  (use-package org
+    :ensure t
+    :commands org-mode
+    :hook (org-mode . sil/org-mode-setup)
+    :config
+    (sil/org-font-setup)
+    :custom
+    (org-ellipsis " ▾")
+    (org-hide-emphasis-markers nil))
+
+  (use-package org-bullets
+    :ensure t
+    :after org
+    :hook (org-mode . org-bullets-mode)
+    :custom
+    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+#+end_src
+
+
+* COMMANDS
+
+** Logging
+
+Commands logging mode
+
+#+begin_src emacs-lisp
+  ;; Command log mode
+  (use-package command-log-mode
+    :ensure t
+    :config
+    (global-command-log-mode 1))
+#+end_src
+
+
+** Helpful commands and Autocompletion
+
+#+begin_src emacs-lisp
+  ;; Use Ivy and Counsel for completions
+  (use-package ivy
+    :ensure t
+    :diminish
+    :bind (("C-s" . swiper)
+           :map ivy-minibuffer-map
+           ("TAB" . ivy-alt-done)
+           ("C-l" . ivy-alt-done)
+           ("C-j" . ivy-next-line)
+           ("C-k" . ivy-previous-line)
+           :map ivy-switch-buffer-map
+           ("C-k" . ivy-previous-line)
+           ("C-l" . ivy-done)
+           ("C-d" . ivy-switch-buffer-kill)
+           :map ivy-reverse-i-search-map
+           ("C-k" . ivy-previous-line)
+           ("C-d" . ivy-reverse-i-search-kill))
+    :config
+    (ivy-mode 1))
+
+  (use-package counsel
+    :ensure t
+    :after ivy
+    :custom
+    (ivy-initial-inputs-alist nil) ; Don't start searches with ^
+    :config
+    (counsel-mode 1))
+
+  ;; Which-key
+  (use-package which-key
+    :ensure t
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :custom
+    (which-key-idle-delay 0.3))
+
+  ;; Ivy rich
+  (use-package ivy-rich
+    :ensure t
+    :after ivy
+    :init
+    (ivy-rich-mode 1))
+
+  ;; Helpful - A better emacs *help* buffer
+  (use-package helpful
+    :ensure t
+    :after counsel
+    :custom
+    (counsel-describe-function-function #'helpful-callable)
+    (counsel-describe-variable-function #'helpful-variable)
+    :bind
+    ([remap describe-function] . counsel-describe-function)
+    ([remap describe-command] . helpful-command)
+    ([remap describe-variable] . counsel-describe-variable)
+    ([remap describe-key] . helpful-key))
+#+end_src
+
+
+
+* KEYBINDINGS
+
+** General
+
+Must have package for managing your keybindings
+
+#+begin_src emacs-lisp
+  ;; General package for key bindings
+  (use-package general ; This package may be used in other
+                       ; packages config (like `hydra`)
+    :ensure t
+    :config ; This is a basic general conf
+    ;; Definer
+    (general-create-definer sil/leader-keys ; This defined may be used
+                                               ; in other packages (like `hydra`)
+      :keymaps '(normal insert visual emacs)
+      :prefix "SPC"
+      :global-prefix "C-SPC")
+
+    ;; Define basic leader key bindings
+    (sil/leader-keys
+      "tt" '(counsel-load-theme :which-key "choose theme"))
+
+    ;; Define all other basic key bindings
+    (general-define-key
+     "<escape>" 'keyboard-escape-quit ; Make ESC quit prompts
+     "C-M-j" 'counsel-switch-buffer
+     "C-s" 'counsel-grep-or-swiper))
+#+end_src
+
+
+** Hydra
+
+Useful package for simplify text resizing.
+
+#+begin_src emacs-lisp
+  ;; Hydra
+  (use-package hydra ; So cool package for me
+                     ; for text resizing
+    :ensure t
+    :after general
+    :config
+    (defhydra hydra-text-scale (:timeout 4)
+      "scale text"
+      ("j" text-scale-increase "in")
+      ("k" text-scale-decrease "out")
+      ("f" nil "finished" :exit t))
+
+    (sil/leader-keys
+     "ts" '(hydra-text-scale/body :which-key "scale text")))
+#+end_src
+
+
+* IDE
+
+** Project management
+
+#+begin_src emacs-lisp
+  ;; Projectile
+  (use-package projectile
+    :ensure t
+    :diminish projectile-mode
+    :config (projectile-mode)
+    :custom
+    (projectile-completion-system 'ivy)
+    :bind-keymap ("C-c p" . projectile-command-map)
+    :init
+    (when (file-directory-p "~/Projects/Code")
+      (setq projectile-project-search-path '("~/Projects/Code")))
+    (setq projectile-switch-project-action #'projectile-dired))
+
+  (use-package counsel-projectile
+    :ensure t
+    :config (counsel-projectile-mode))
+
+  ;; Magit - Emacs git integration
+  (use-package magit
+    :ensure t
+    :commands (magit-status magit-get-current-branch)
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+  ;; NOTE: Make sure to configure a Github token before using this package:
+  ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+  ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+  (use-package forge
+    :ensure t)
+#+end_src
+
+
+** LSP
+
+Emacs LSP mode.
+
+#+begin_src emacs-lisp
+  (defun sil/lsp-mode-setup ()
+    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+    (lsp-headerline-breadcrumb-mode))
+
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp lsp-deferred)
+    :hook (lsp-mode . sil/lsp-mode-setup)
+    :custom
+    (lsp-keymap-prefix "C-c l") ;; Or "C-l", "s-l"
+    :config
+    (lsp-enable-which-key-integration t))
+#+end_src
+
+A little improvements for LSP mode
+
+#+begin_src emacs-lisp
+  (use-package lsp-ui
+    :ensure t
+    :hook (lsp-mode . lsp-ui-mode))
+
+  (use-package lsp-treemacs
+    :ensure t
+    :after lsp)
+
+  (use-package lsp-ivy
+    :ensure t
+    :after lsp)
+#+end_src
+
+
+** Code completion
+
+The Company is a basic package for autocompletion in Emacs.
+
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :after lsp
+    :hook (lsp-mode . company-mode)
+    :bind (:map company-active-map
+                ("<tab>" . company-complete-selection)
+                :map lsp-mode-map
+                ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+#+end_src
+
+Company Box is a UI improves for Company Mode
+
+#+begin_src emacs-lisp
+  (use-package company-box
+    :ensure t
+    :hook (company-mode . company-box-mode))
+#+end_src
+
+
+* LANGUAGES SPECIFIC
+
+** Emacs Lisp
+
+#+begin_src emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+#+end_src
+
+** C/C++
+
+#+begin_src emacs-lisp
+  (add-hook 'c-mode-hook 'lsp-deferred)
+  (add-hook 'c++-mode-hook 'lsp-deferred)
+  (add-hook 'c-or-c++-mode-hook 'lsp-deferred)
+#+end_src
+
+** Python
+
+#+begin_src emacs-lisp
+  (use-package python-mode
+    :hook (python-mode . lsp-deferred))
+#+end_src
+
+** Rust
+
+#+begin_src emacs-lisp
+  (use-package rust-mode
+    :ensure t
+    :mode "\\.rs\\'"
+    :hook (rust-mode . lsp-deferred))
+#+end_src
+
+** Build systems
+
+*** CMake
+
+#+begin_src emacs-lisp
+  (use-package cmake-mode
+    :ensure t
+    :hook (cmake-mode . lsp-deferred))
+#+end_src
+
+*** Meson
+
+#+begin_src emacs-lisp
+  (use-package meson-mode
+    :ensure t
+    :hook (meson-mode . company-mode))
+#+end_src
+
+** Arduino
+
+#+begin_src emacs-lisp
+    (use-package arduino-mode
+      :ensure t)
+
+    (use-package arduino-cli-mode
+      :ensure t
+      :hook arduino-mode
+      :mode "\\.ino\\'"
+      :custom
+      (arduino-cli-warnings 'all)
+      (arduino-cli-verify t))
+#+end_src
+
+** Nix
+
+#+begin_src emacs-lisp
+  (use-package nix-mode
+    :ensure t
+    :hook (nix-mode . lsp-deferred)
+    :mode "\\.nix\\'")
+#+end_src

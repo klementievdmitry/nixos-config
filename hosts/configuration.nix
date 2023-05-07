@@ -4,17 +4,17 @@ let
 in
 {
   networking = {
-    enableIPv6 = false;
     networkmanager = {
       enable = true;
-      wifi.backend = "wpa_supplicant";
+      #dhcp = "dhcpcd" # "internal" by default
     };
+    #enableIPv6 = true;
   };
-
+    
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.nushell;
+    #shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false; # User doesn't need password when using sudo
 
@@ -35,14 +35,19 @@ in
   security.rtkit.enable = true;
 
   fonts.fonts = with pkgs; [
+    # Core fonts
     carlito
     vegur
     source-code-pro
     font-awesome
     corefonts
 
+    # Main fonts
     jetbrains-mono
     fira-code
+
+    # Icons for Emacs
+    emacs-all-the-icons-fonts
 
     (nerdfonts.override {
       fonts = [
@@ -75,52 +80,18 @@ in
     };
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+  ];
+  
   services = {
-    gnome.gnome-keyring.enable = true;
-
     printing = {
       enable = true;
     };
 
-    postgresql = {
-      enable = true;
-    };
-
-    matrix-synapse = {
-      enable = true;
-      settings = {
-        app_service_config_files = [
-          "/var/lib/matrix-synapse/discord-registration.yaml"
-        ];
-      };
-    };
-
-    matrix-appservice-discord = {
-      enable = true;
-      settings = {
-        bridge = {
-          domain = "matrix.org";
-          homeserverUrl = "https://matrix.org";
-        };
-
-        database = {
-          filename = "discord.db";
-          connString = "socket:/run/postgresql?db=matrix-appservice-discord";
-        };
-
-        room.defaultVisibility = "public";
-        
-        channel = {
-          namePattern = "[Discord] :guild :name";
-          deleteOptions = {
-            disableMessaging = false;
-            unserRoomAlias = true;
-            unlistFromDirectory = true;
-            setInviteOnly = true;
-            ghostsLeave = true;
-          };
-        };
-      };
+    tor = {
+      enable = false;
     };
 
     avahi = {
@@ -270,5 +241,4 @@ in
     };
     stateVersion = "22.05";
   };
-
 }

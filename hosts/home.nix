@@ -8,30 +8,20 @@
     packages = with pkgs; [
       # Development
       direnv
+      rnix-lsp
 
       # Terminal
       alacritty
-      btop
-      nitch
       ranger
-      tldr
       helix
 
-      # System utils
-      inxi
-      lm_sensors
-      gparted
-      btrfs-progs
-      
       # Video/Audio
       feh
       mpv
       pavucontrol
       plex-media-player
       vlc
-      stremio
       alsa-utils
-      pulseaudio
       rnnoise-plugin
 
       # Bluetooth
@@ -39,15 +29,10 @@
 
       # Apps
       appimage-run
-      firefox
-      brave
-      remmina
-      discord
-      element-desktop # Matrix client
+      librewolf
       tor-browser-bundle-bin
       
       # File management
-      gnome.file-roller
       okular
       pcmanfm
       p7zip
@@ -82,37 +67,6 @@
     emacs = {
       enable = true;
       package = pkgs.emacs;
-    };
-  };
-
-  gtk = {
-    # Theming
-    enable = true;
-    theme = {
-      name = "Dracula";
-      #name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-      package = pkgs.dracula-theme;
-      #package = pkgs.catppuccin-gtk.override {
-      #  accents = ["mauve"];
-      #  size = "compact";
-      #  variant = "mocha";
-      #};
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      #name = "JetBrains Mono Medium";
-      name = "FiraCode Nerd Font Mono Medium";
-    }; # Cursor is declared under home.pointerCursor
-  };
-
-  systemd.user.targets.tray = {
-    # Tray.target can not be found when xsession is not enabled. This fixes the issue.
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = [ "graphical-session-pre.target" ];
     };
   };
 }

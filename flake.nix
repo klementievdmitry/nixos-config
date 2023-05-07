@@ -13,7 +13,7 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     let
-      user = "ryveti";
+      user = "x";
     in
     {
       nixosConfigurations = (
