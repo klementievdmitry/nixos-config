@@ -8,7 +8,7 @@ in
     #rofi
     rofi-wayland
   ];
-  home-manager.${user}.file = {
+  home-manager.users.${user}.home.file = {
     "rofi/config.rasi".text = ''
       /**
        *
