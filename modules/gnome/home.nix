@@ -4,7 +4,7 @@
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
-        "brave.desktop"
+        "librewolf.desktop"
         "emacsclient.desktop"
         "com.obsproject.Studio.desktop"
         "steam.desktop"
@@ -12,6 +12,36 @@
         "org.gnome.Console.desktop"
         "element-desktop.desktop"
       ];
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "trayIconsReloaded@selfmade.pl"
+        "blur-my-shell@aunetx"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "dash-to-panel@jderose9.github.com"
+        "just-perfection-desktop@just-perfection"
+        "caffeine@patapon.info"
+        "clipboard-indicator@tudmotu.com"
+        "horizontal-workspace-indicator@tty2.io"
+        "bluetooth-quick-connect@bjarosze.gmail.com"
+        "battery-indicator@jgotti.org"
+        "gsconnect@andyholmes.github.io"
+        "pip-on-top@rafostar.github.com"
+        "forge@jmmaranan.com"
+        # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
+        # "fullscreen-avoider@noobsai.github.com"     # Incompatible with dash-to-panel
+      ];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
+      switch-to-application-5 = [ ];
+      switch-to-application-6 = [ ];
+      switch-to-application-7 = [ ];
+      switch-to-application-8 = [ ];
+      switch-to-application-9 = [ ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -20,8 +50,20 @@
       clock-show-weekday = true;
     };
 
+    "org/gnome/desktop/privacy" = {
+      report-technical-problems = "false";
+    };
+    
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
+    };
+
+    "org/gnome/desktop/wm/preferences" = {
+      action-right-click-titlebar = "toggle-maximize";
+      action-middle-click-titlebar = "minimize";
+      resize-with-right-button = true;
+      mouse-button-modifier = "<Super>";
+      button-layout = ":minimize,close";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
@@ -32,8 +74,136 @@
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
     };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      # maximize = ["<Super>Up"];                     # For floating
+      # unmaximize = ["<Super>Down"];
+      maximize = [ "@as []" ]; # For tilers
+      unmaximize = [ "@as []" ];
+      switch-to-workspace-left = [ "<Super>Left" ];
+      switch-to-workspace-right = [ "<Super>Right" ];
+      switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-5 = [ "<Super>5" ];
+      move-to-workspace-left = [ "<Shift><Super>Left" ];
+      move-to-workspace-right = [ "<Shift><Super>Right" ];
+      move-to-workspace-1 = [ "<Shift><Super>1" ];
+      move-to-workspace-2 = [ "<Shift><Super>2" ];
+      move-to-workspace-3 = [ "<Shift><Super>3" ];
+      move-to-workspace-4 = [ "<Shift><Super>4" ];
+      move-to-workspace-5 = [ "<Shift><Super>5" ];
+      move-to-monitor-left = [ "<Alt><Super>Left" ];
+      move-to-monitor-right = [ "<Alt><Super>Right" ];
+      close = [ "<Super>q" "<Super>F4" ];
+      toggle-fullscreen = [ "<Super>f" ];
+    };
+
+    "org/gnome/mutter" = {
+      workspaces-only-on-primary = false;
+      center-new-windows = true;
+      edge-tiling = false;                            # Disabled when tiling
+    };
+
+    "org/gnome/mutter/keybindings" = {
+      #toggle-tiled-left = ["<Super>Left"];           # For floating
+      #toggle-tiled-right = ["<Super>Right"];
+      toggle-tiled-left = ["@as []"];                 # For tilers
+      toggle-tiled-right = ["@as []"];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>Return";
+      command = "kgx";
+      name = "open-terminal";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>t";
+      command = "emacs";
+      name = "open-editor";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>e";
+      command = "nautilus";
+      name = "open-file-browser";
+    };
+
+    "org/gnome/shell/extension/dash-to-panel" = {     # Possibly need to set this manually
+      panel-position = ''{"0":"TOP","1":"Top"}'';
+      panel-sizes = ''{"0":24,"1":24}'';
+      panel-element-positions-monitors-sync = true;
+      appicon-margin = 0;
+      appicon-padding = 4;
+      dot-position = "TOP";
+      dot-style-focused = "SOLID";
+      dot-style-unfocused = "DOTS";
+      animate-appicon-hover = true;
+      animate-appicon-hover-animation-travel = "{'SIMPLE': 0.14999999999999999, 'RIPPLE': 0.40000000000000002, 'PLANK': 0.0}";
+      isolate-monitors = true;
+    };
+
+    "org/gnome/shell/extensions/just-perfection" = {
+      theme = true;
+      activities-button = false;
+      app-menu = false;
+      clock-menu-position = 1;
+      clock-menu-position-offset = 7;
+    };
+
+    "org/gnome/shell/extensions/caffeine" = {
+      enable-fullscreen = true;
+      restore-state = true;
+      show-indicator = true;
+      show-notification = false;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell" = {
+      brightness = 0.9;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      customize = true;
+      sigma = 0;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/overview" = { # Temporary = D2D Bug
+      customize = true;
+      sigma = 0;
+    };
+
+    "org/gnome/shell/extensions/horizontal-workspace-indicator" = {
+      widget-position = "left";
+      widget-orientation = "horizontal";
+      icons-style = "circles";
+    };
+
+    "org/gnome/shell/extensions/bluetooth-quick-connect" = {
+      show-battery-icon-on = true;
+      show-battery-value-on = true;
+    };
+
+    "org/gnome/shell/extensions/pip-on-top" = {
+      stick = true;
+    };
   };
 
   home.packages = with pkgs; [
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.removable-drive-menu
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.battery-indicator-upower
+    gnomeExtensions.just-perfection
+    gnomeExtensions.caffeine
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.workspace-indicator-2
+    gnomeExtensions.bluetooth-quick-connect
+    gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
+    gnomeExtensions.pip-on-top
+    gnomeExtensions.pop-shell
+    gnomeExtensions.forge
   ];
 }
