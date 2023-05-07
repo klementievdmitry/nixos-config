@@ -14,21 +14,9 @@
       ];
       disable-user-extensions = false;
       enabled-extensions = [
-        "trayIconsReloaded@selfmade.pl"
-        "blur-my-shell@aunetx"
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "dash-to-panel@jderose9.github.com"
-        "just-perfection-desktop@just-perfection"
-        "caffeine@patapon.info"
-        "clipboard-indicator@tudmotu.com"
-        "horizontal-workspace-indicator@tty2.io"
         "bluetooth-quick-connect@bjarosze.gmail.com"
-        "battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
-        "pip-on-top@rafostar.github.com"
-        "forge@jmmaranan.com"
-        # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
-        # "fullscreen-avoider@noobsai.github.com"     # Incompatible with dash-to-panel
+        "material-shell@papyelgringo"
       ];
     };
 
