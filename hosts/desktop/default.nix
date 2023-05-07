@@ -3,7 +3,7 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
-    [ (import ../../modules/bspwm/default.nix) ];
+    [ (import ../../modules/hyprland/default.nix) ];
   
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;

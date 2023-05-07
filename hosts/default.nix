@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, hyprland, ... }:
 
 let
   system = "x86_64-linux";
@@ -20,6 +20,7 @@ in
       };
     };
     modules = [
+      hyprland.nixosModules.default
       ./desktop
       ./configuration.nix
 

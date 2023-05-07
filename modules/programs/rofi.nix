@@ -1,13 +1,14 @@
-{ config, libs, pkgs, ... }:
+{ config, libs, pkgs, user, ... }:
 
 let
   colors = import ../theme/colors.nix;
 in
 {
-  home.packages = with pkgs; [
-    rofi
+  environment.systemPackages = with pkgs; [
+    #rofi
+    rofi-wayland
   ];
-  xdg.configFile = {
+  home-manager.${user}.file = {
     "rofi/config.rasi".text = ''
       /**
        *
