@@ -96,7 +96,7 @@
       move-to-workspace-5 = [ "<Shift><Super>5" ];
       move-to-monitor-left = [ "<Alt><Super>Left" ];
       move-to-monitor-right = [ "<Alt><Super>Right" ];
-      close = [ "<Super>q" "<Super>F4" ];
+      close = [ "<Super>q" "<Alt>F4" ];
       toggle-fullscreen = [ "<Super>f" ];
     };
 
@@ -113,97 +113,15 @@
       toggle-tiled-right = ["@as []"];
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>Return";
-      command = "kgx";
-      name = "open-terminal";
-    };
-
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Super>t";
-      command = "emacs";
-      name = "open-editor";
-    };
-
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Super>e";
-      command = "nautilus";
-      name = "open-file-browser";
-    };
-
-    "org/gnome/shell/extension/dash-to-panel" = {     # Possibly need to set this manually
-      panel-position = ''{"0":"TOP","1":"Top"}'';
-      panel-sizes = ''{"0":24,"1":24}'';
-      panel-element-positions-monitors-sync = true;
-      appicon-margin = 0;
-      appicon-padding = 4;
-      dot-position = "TOP";
-      dot-style-focused = "SOLID";
-      dot-style-unfocused = "DOTS";
-      animate-appicon-hover = true;
-      animate-appicon-hover-animation-travel = "{'SIMPLE': 0.14999999999999999, 'RIPPLE': 0.40000000000000002, 'PLANK': 0.0}";
-      isolate-monitors = true;
-    };
-
-    "org/gnome/shell/extensions/just-perfection" = {
-      theme = true;
-      activities-button = false;
-      app-menu = false;
-      clock-menu-position = 1;
-      clock-menu-position-offset = 7;
-    };
-
-    "org/gnome/shell/extensions/caffeine" = {
-      enable-fullscreen = true;
-      restore-state = true;
-      show-indicator = true;
-      show-notification = false;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell" = {
-      brightness = 0.9;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/panel" = {
-      customize = true;
-      sigma = 0;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/overview" = { # Temporary = D2D Bug
-      customize = true;
-      sigma = 0;
-    };
-
-    "org/gnome/shell/extensions/horizontal-workspace-indicator" = {
-      widget-position = "left";
-      widget-orientation = "horizontal";
-      icons-style = "circles";
-    };
-
     "org/gnome/shell/extensions/bluetooth-quick-connect" = {
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
-
-    "org/gnome/shell/extensions/pip-on-top" = {
-      stick = true;
-    };
   };
 
   home.packages = with pkgs; [
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.removable-drive-menu
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.battery-indicator-upower
-    gnomeExtensions.just-perfection
-    gnomeExtensions.caffeine
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.workspace-indicator-2
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
-    gnomeExtensions.pip-on-top
-    gnomeExtensions.pop-shell
-    gnomeExtensions.forge
+    gnomeExtensions.material-shell
   ];
 }

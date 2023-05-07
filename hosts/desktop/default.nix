@@ -3,7 +3,8 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
-    [ (import ../../modules/gnome/default.nix) ];
+    [ (import ../../modules/programs/games.nix) ] ++ # Games
+    [ (import ../../modules/gnome/default.nix) ]; # Gnome
   
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
