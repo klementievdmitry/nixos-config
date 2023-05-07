@@ -3,6 +3,8 @@
 {
   services.xserver = {
     enable = true;
+    layout = "us, ru";
+    xkbOptions = "grp:win_space_toggle";
     windowManager.bspwm = {
       enable = true;
     };
