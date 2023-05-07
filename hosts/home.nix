@@ -31,6 +31,7 @@
       appimage-run
       librewolf
       tor-browser-bundle-bin
+      emacs
       
       # File management
       okular
@@ -53,20 +54,9 @@
 
   services = {
     lorri.enable = true;
-
-    # Enable Emacs as Daemon
-    # using home-manager instead of native (for doom support)
-    emacs = {
-      enable = true;
-    };
   };
 
   programs = {
     home-manager.enable = true;
-
-    emacs = {
-      enable = true;
-      package = pkgs.emacs;
-    };
   };
 }

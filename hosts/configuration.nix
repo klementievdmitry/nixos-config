@@ -238,4 +238,12 @@ in
     };
     stateVersion = "22.05";
   };
+
+  systemd.user.services.emacs-daemon = {
+    script = ''
+      emacs --daemon &
+    '';
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+  };
 }
