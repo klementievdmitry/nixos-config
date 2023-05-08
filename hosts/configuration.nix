@@ -9,6 +9,21 @@ in
     };
   };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch";
+    };
+    histSize = 10000;
+    histFile = "$HOME/.zsh_history";
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "robbyrussell";
+    };
+  };
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
@@ -240,7 +255,7 @@ in
     after = [ "graphical-session.target" ];
     serviceConfig = {
       ExecStart = ''${pkgs.emacs}/bin/emacs --daemon'';
-      ExecStop = ''killall emacs'';
+      ExecStop = ''${pkgs.killall}/bin/killall emacs'';
     };
   };
 }
