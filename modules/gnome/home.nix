@@ -20,6 +20,9 @@
         "gsconnect@andyholmes.github.io"
         "space-bar@luchrioh"
         "Vitals@CoreCoding.com"
+        "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
+        "caffeine@patapon.info"
+        "clipboard-indicator@tudmotu.com"
       ];
     };
    
@@ -108,6 +111,10 @@
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
+
+    "org/gnome/shell/extensions/space-bar/shortcuts" = {
+      open-menu = ["<Super>O"];
+    };
   };
 
   home.packages = with pkgs; [
@@ -116,5 +123,8 @@
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
     gnomeExtensions.space-bar
     gnomeExtensions.vitals
+    gnomeExtensions.caffeine
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.auto-move-windows
   ];
 }
