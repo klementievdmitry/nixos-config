@@ -6,9 +6,7 @@ in
   networking = {
     networkmanager = {
       enable = true;
-      #dhcp = "dhcpcd" # "internal" by default
     };
-    #enableIPv6 = true;
   };
 
   users.users.${user} = {
@@ -79,8 +77,6 @@ in
       '';
     };
   };
-
-  #xdg.portal.enable = true;
 
   services = {
     printing = {
