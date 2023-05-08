@@ -13,8 +13,8 @@
     xserver = {
       enable = true;
 
-      layout = "us, de, ru";
-      xkbOptions = "grp:caps_toggle";
+      layout = "us, ru";
+      xkbOptions = "grp:win_space_toggle";
       libinput.enable = true;
       modules = [ pkgs.xf86_input_wacom ];
       wacom.enable = true;

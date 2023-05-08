@@ -4,6 +4,7 @@
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
+        "Dota 2.desktop"
         "librewolf.desktop"
         "emacsclient.desktop"
         "com.obsproject.Studio.desktop"
@@ -14,11 +15,14 @@
       ];
       disable-user-extensions = false;
       enabled-extensions = [
+        "trayIconsReloaded@selfmade.pl"
         "bluetooth-quick-connect@bjarosze.gmail.com"
         "gsconnect@andyholmes.github.io"
+        "space-bar@luchrioh"
+        "Vitals@CoreCoding.com"
       ];
     };
-
+   
     "org/gnome/shell/keybindings" = {
       switch-to-application-1 = [ ];
       switch-to-application-2 = [ ];
@@ -83,7 +87,7 @@
       move-to-workspace-5 = [ "<Shift><Super>5" ];
       move-to-monitor-left = [ "<Alt><Super>Left" ];
       move-to-monitor-right = [ "<Alt><Super>Right" ];
-      close = [ "<Super>q" "<Alt>F4" ];
+      close = [ "<Alt>F4" ];
       toggle-fullscreen = [ "<Super>f" ];
     };
 
@@ -107,7 +111,10 @@
   };
 
   home.packages = with pkgs; [
+    gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
+    gnomeExtensions.space-bar
+    gnomeExtensions.vitals
   ];
 }
