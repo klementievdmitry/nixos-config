@@ -31,7 +31,6 @@
       appimage-run
       librewolf
       tor-browser-bundle-bin
-      emacs
 
       # File management
       okular
@@ -58,5 +57,9 @@
 
   programs = {
     home-manager.enable = true;
+
+    emacs = {
+      enable = true;
+    };
   };
 }

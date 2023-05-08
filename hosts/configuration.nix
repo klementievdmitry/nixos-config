@@ -249,13 +249,4 @@ in
     };
     stateVersion = "22.05";
   };
-
-  systemd.services.emacs-daemon = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = ''${pkgs.emacs}/bin/emacs --daemon'';
-      ExecStop = ''${pkgs.killall}/bin/killall emacs'';
-    };
-  };
 }
