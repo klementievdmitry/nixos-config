@@ -8,6 +8,8 @@
     packages = with pkgs; [
       # Development
       direnv
+      python39
+      python39Packages.pip
 
       # Terminal
       alacritty
@@ -30,6 +32,7 @@
       appimage-run
       librewolf
       tor-browser-bundle-bin
+      discord
 
       # File management
       okular
@@ -39,6 +42,9 @@
       unzip
       unrar
       zip
+
+      # For Zsh
+      thefuck
     ];
 
     # Emacs conf
