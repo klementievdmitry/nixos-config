@@ -21,6 +21,12 @@
         `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat autosave-dir "\\1") t)))
 #+end_src
 
+- Direnv
+
+#+begin_src emacs-lisp
+  (use-package direnv
+    :ensure t)
+#+end_src
 
 * PACKAGE MANAGEMENT
 

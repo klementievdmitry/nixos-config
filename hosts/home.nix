@@ -8,7 +8,6 @@
     packages = with pkgs; [
       # Development
       direnv
-      rnix-lsp
 
       # Terminal
       alacritty
