@@ -12,7 +12,7 @@ in
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    #shell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false; # User doesn't need password when using sudo
 
