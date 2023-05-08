@@ -16,7 +16,6 @@
       enabled-extensions = [
         "bluetooth-quick-connect@bjarosze.gmail.com"
         "gsconnect@andyholmes.github.io"
-        "material-shell@papyelgringo"
       ];
     };
 
@@ -110,6 +109,5 @@
   home.packages = with pkgs; [
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
-    gnomeExtensions.material-shell
   ];
 }
