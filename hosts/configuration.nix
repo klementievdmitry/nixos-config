@@ -10,7 +10,7 @@ in
     };
     #enableIPv6 = true;
   };
-    
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
@@ -81,7 +81,7 @@ in
   };
 
   #xdg.portal.enable = true;
-  
+
   services = {
     printing = {
       enable = true;
@@ -239,11 +239,12 @@ in
     stateVersion = "22.05";
   };
 
-  systemd.user.services.emacs-daemon = {
-    script = ''
-      emacs --daemon &
-    '';
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
+  systemd.services.emacs-daemon = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = ''${pkgs.emacs}/bin/emacs --daemon'';
+      ExecStop = ''killall emacs'';
+    };
   };
 }
