@@ -18,7 +18,6 @@
         "trayIconsReloaded@selfmade.pl"
         "bluetooth-quick-connect@bjarosze.gmail.com"
         "gsconnect@andyholmes.github.io"
-        "space-bar@luchrioh"
         "Vitals@CoreCoding.com"
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "caffeine@patapon.info"
@@ -123,7 +122,6 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
-    gnomeExtensions.space-bar
     gnomeExtensions.vitals
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
