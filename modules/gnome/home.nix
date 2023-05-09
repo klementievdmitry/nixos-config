@@ -113,6 +113,8 @@
     };
 
     "org/gnome/shell/extensions/space-bar/shortcuts" = {
+      enable-activate-workspace-shortcuts = false;
+      enable-move-to-workspace-shortcuts = false;
       open-menu = ["<Super>O"];
     };
   };
