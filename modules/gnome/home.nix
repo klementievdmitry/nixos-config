@@ -110,12 +110,6 @@
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
-
-    "org/gnome/shell/extensions/space-bar/shortcuts" = {
-      enable-activate-workspace-shortcuts = false;
-      enable-move-to-workspace-shortcuts = false;
-      open-menu = ["<Super>O"];
-    };
   };
 
   home.packages = with pkgs; [
