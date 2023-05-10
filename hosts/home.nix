@@ -16,6 +16,9 @@
       ranger
       helix
 
+      # Shell utils
+      exa # "ls" replacement written in Rust
+
       # Video/Audio
       feh
       mpv
