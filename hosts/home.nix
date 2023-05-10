@@ -36,6 +36,7 @@
       librewolf
       tor-browser-bundle-bin
       discord
+      qbittorrent
 
       # File management
       okular
