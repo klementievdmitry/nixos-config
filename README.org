@@ -1,0 +1,10 @@
+#+title: NixOS config
+#+author: Klementiev Dmitry
+
+* PARTITIONING
+
+| /MOUNT POINT/ | /LABEL/ | /FILESYSTEM/ |
+| \/boot\/efi   | ESP     | vfat         |
+| \/            | ROOT    | ext4         |
+| \/home        | HOME    | ext4         |
+| swap          | SWAP    | linuxswap    |
