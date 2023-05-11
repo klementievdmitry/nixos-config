@@ -122,3 +122,4 @@
     gnomeExtensions.auto-move-windows
   ];
 }
+
