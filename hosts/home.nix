@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, system, ... }:
+{ config, lib, pkgs, user, system, state-version, ... }:
 
 {
   home = {
@@ -57,7 +57,7 @@
       recursive = true;
     };
 
-    stateVersion = "22.05";
+    stateVersion = state-version;
   };
 
   services = {

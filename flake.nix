@@ -1,5 +1,5 @@
 {
-  description = "A very basic Flake";
+  description = "Description?!";
 
   inputs =
     {
@@ -13,13 +13,17 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     let
+      # User X
       user = "x";
+
+      # Using variable for state version
+      state-version = "23.05";
     in
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user home-manager;
+          inherit inputs nixpkgs user home-manager state-version;
         }
       );
     };

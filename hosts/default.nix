@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, user, ... }:
+{ lib, nixpkgs, home-manager, inputs, user, state-version, ... }:
 
 let
   system = "x86_64-linux";
@@ -14,7 +14,9 @@ in
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-        inherit inputs user system;
+      # Configuration special args
+      inherit inputs user system state-version;
+
       host = {
         hostName = "desktop";
       };
@@ -27,7 +29,9 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit user;
+          # Home-manager special args
+          inherit user state-version;
+
           host = {
             hostName = "desktop";
           };
