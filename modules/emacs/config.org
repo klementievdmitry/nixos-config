@@ -1,5 +1,5 @@
-#+title: SuorILove's Emacs Config
-#+author: SuorILove
+#+title: Ryveti's Emacs Config
+#+author: Klementiev Dmitry
 
 * BASIC SETUP
 
