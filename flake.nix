@@ -17,7 +17,7 @@
       user = "x";
       
       # Using variable for state version
-      state-version = "23.05";
+      state-version = "22.05";
     in
     {
       nixosConfigurations = (
