@@ -6,5 +6,5 @@
 | /MOUNT POINT/ | /LABEL/ | /FILESYSTEM/ |
 | /boot/efi     | ESP     | vfat         |
 | /             | ROOT    | ext4         |
-| /nix          | NIX     | ext4         |
+| /home         | HOME    | ext4         |
 | swap          | SWAP    | linuxswap    |
