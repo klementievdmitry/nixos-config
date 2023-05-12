@@ -1,11 +1,11 @@
-let
-  # Using variable for state version
-  state-version = "23.05";
-in
 {
   description = "Description?!";
 
   inputs =
+    let
+      # Using variable for state version
+      state-version = "23.05";
+    in
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-${state-version}";
 
@@ -19,6 +19,9 @@ in
     let
       # User X
       user = "x";
+      
+      # Using variable for state version
+      state-version = "23.05";
     in
     {
       nixosConfigurations = (
