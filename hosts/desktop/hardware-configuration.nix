@@ -17,8 +17,8 @@
       fsType = "ext4";
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-label/NIX";
+  fileSystems."/home" =
+    { device = "/dev/disk/by-label/HOME";
       fsType = "ext4";
     };
 
