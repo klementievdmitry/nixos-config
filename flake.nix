@@ -2,12 +2,8 @@
   description = "Description?!";
 
   inputs =
-    let
-      # Using variable for state version
-      state-version = "23.05";
-    in
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-${state-version}";
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
       home-manager = {
         url = "github:nix-community/home-manager";
