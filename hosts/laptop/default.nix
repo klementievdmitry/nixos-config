@@ -14,7 +14,9 @@
       "amdgpu"
       "k10temp"
     ];
-    kernelParams = [];
+    kernelParams = [
+      "nvme_core.default_ps_max_latency_us=0"
+    ];
   };
 
   nixpkgs = {
