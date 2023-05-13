@@ -1,6 +1,27 @@
 #+title: Ryveti's Emacs Config
 #+author: Klementiev Dmitry
 
+* PACKAGE MANAGEMENT
+
+** Setup package.el to work with MELPA.
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "https://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+#+end_src
+
+
+** Installing use-package
+
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+#+end_src
+
+
 * BASIC SETUP
 
 - Electric pair mode (auto pairs)
@@ -26,27 +47,6 @@
 #+begin_src emacs-lisp
   (use-package direnv
     :ensure t)
-#+end_src
-
-
-* PACKAGE MANAGEMENT
-
-** Setup package.el to work with MELPA.
-
-#+begin_src emacs-lisp
-  (require 'package)
-  (add-to-list 'package-archives
-	       '("melpa" . "https://melpa.org/packages/"))
-  (package-refresh-contents)
-  (package-initialize)
-#+end_src
-
-
-** Installing use-package
-
-#+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
 #+end_src
 
 
