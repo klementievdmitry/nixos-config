@@ -1,14 +1,14 @@
-{ lib, nixpkgs, home-manager, inputs, user, state-version, ... }:
+{ lib, nixpkgs-stable, home-manager, inputs, user, state-version, ... }:
 
 let
   system = "x86_64-linux";
 
-  pkgs = import nixpkgs {
+  pkgs = import nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
   };
 
-  lib = nixpkgs.lib;
+  lib = nixpkgs-stable.lib;
 in
 {
   desktop = lib.nixosSystem {
