@@ -157,7 +157,7 @@ in
     };
 
     package = pkgs.nixVersions.unstable;
-    registry.nixpkgs.flake = inputs.nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs-stable;
 
     extraOptions = ''
       experimental-features = nix-command flakes
