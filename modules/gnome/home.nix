@@ -171,6 +171,15 @@ with lib;
       tray-size = 0;
       window-preview-title-position = "TOP";
     };
+
+    "org/gnome/desktop/input-sources" = with hm.gvariant; {
+      per-window = true;
+      sources = mkArray (type.tupleOf [type.string type.string]) [
+        (mkTuple ["xkb" "us"])
+        (mkTuple ["xkb" "ru"])
+      ];
+      xkb-options = mkArray type.string ["grp:win_space_toggle"];
+    };
   };
 
   home.packages = with pkgs; [
