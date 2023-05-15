@@ -37,6 +37,8 @@
       tor-browser-bundle-bin
       discord
       qbittorrent
+      tdesktop
+      element-desktop
 
       # File management
       okular

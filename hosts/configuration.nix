@@ -12,6 +12,7 @@ in
   programs.zsh = {
     enable = true;
     shellAliases = {
+      l = "${pkgs.exa}/bin/exa -aal";
       ll = "${pkgs.exa}/bin/exa -l";
       update = "sudo nixos-rebuild switch";
     };

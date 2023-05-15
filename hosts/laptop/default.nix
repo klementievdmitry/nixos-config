@@ -4,7 +4,7 @@
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
     [ (import ../base/default.nix) ] ++ # Base system configuration
-    [ (import ../../modules/gnome/default.nix) ]; # Gnome
+    [ (import ../../modules/gnome/default.nix) ];
   
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [

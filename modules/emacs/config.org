@@ -446,6 +446,16 @@ Company Box is a UI improves for Company Mode
 #+end_src
 
 
+** Flycheck
+
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (global-flycheck-mode t))
+#+end_src
+
+
 * LANGUAGES SPECIFIC
 
 ** Emacs Lisp
@@ -518,4 +528,14 @@ Company Box is a UI improves for Company Mode
     :ensure t
     :hook (nix-mode . lsp-deferred)
     :mode "\\.nix\\'")
+#+end_src
+
+
+* EMACS SPECIFIC
+
+** Matrix client
+
+#+begin_src emacs-lisp
+  (use-package ement
+    :ensure t)
 #+end_src

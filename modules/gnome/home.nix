@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 
+with lib;
 {
   dconf.settings = {
     "org/gnome/shell" = {
@@ -12,6 +13,10 @@
         "com.parsecgaming.parsec.desktop"
         "org.gnome.Console.desktop"
         "element-desktop.desktop"
+        "torbrowser.desktop"
+        "org.telegram.desktop.desktop"
+        "discord.desktop"
+        "org.gnome.Nautilus.desktop"
       ];
       disable-user-extensions = false;
       enabled-extensions = [
@@ -22,6 +27,12 @@
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "caffeine@patapon.info"
         "clipboard-indicator@tudmotu.com"
+        "arcmenu@arcmenu.com"
+        "browser-tabs@com.github.harshadgavali"
+        "custom-hot-corners-extended@G-dH.github.com"
+        "dash-to-panel@jderose9.github.com"
+        "openweather-extension@jenslody.de"
+        "tiling-assistant@leleat-on-github"
       ];
     };
    
@@ -110,6 +121,56 @@
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
+
+    "org/gnome/shell/extensions/openweather" = {
+      city = "52.7586837,52.28831670221607>Бузулук, Оренбургская область, Приволжский федеральный округ, Россия>0";
+    };
+
+    "org/gnome/shell/extensions/dash-to-panel" = with hm.gvariant; {
+      animate-appicon-hover = true;
+      animate-appicon-hover-animation-convexity = mkArray (type.dictionaryEntryOf [type.string type.double]) [
+        (mkDictionaryEntry ["RIPPLE" 2.0])
+        (mkDictionaryEntry ["PLANK" 1.0])
+        (mkDictionaryEntry ["SIMPLE" 0.0])
+      ];
+      animate-appicon-hover-animation-extent = mkArray (type.dictionaryEntryOf [type.string type.int32]) [
+        (mkDictionaryEntry ["RIPPLE" 4])
+        (mkDictionaryEntry ["PLANK" 4])
+        (mkDictionaryEntry ["SIMPLE" 1])
+      ];
+      animate-appicon-hover-animation-travel = mkArray (type.dictionaryEntryOf [type.string type.double]) [
+        (mkDictionaryEntry ["SIMPLE" 0.29999999999999999])
+        (mkDictionaryEntry ["RIPPLE" 0.40000000000000002])
+        (mkDictionaryEntry ["PLANK" 0.0])
+      ];
+      animate-appicon-hover-animation-type = "SIMPLE";
+      appicon-margin = 8;
+      appicon-padding = 4;
+      dot-position = "BOTTOM";
+      dot-style-focused = "DASHES";
+      dot-style-unfocused = "DOTS";
+      group-apps = true;
+      leftbox-padding = 0;
+      leftbox-size = 0;
+      panel-anchors = ''{"0":"MIDDLE"}'';
+      panel-lengths = ''{"0":100}'';
+      panel-positions = ''{"0":"TOP"}'';
+      show-favorites = true;
+      show-favorites-all-monitors = true;
+      show-running-apps = true;
+      status-icon-padding = 2;
+      stockgs-force-hotcorner = false;
+      stockgs-keep-dash = false;
+      stockgs-keep-top-panel = false;
+      stockgs-panelbtn-click-only = false;
+      trans-bg-color = "#241f31";
+      trans-panel-opacity = 0.7;
+      trans-use-custom-bg = true;
+      trans-use-custom-opacity = true;
+      tray-padding = 4;
+      tray-size = 0;
+      window-preview-title-position = "TOP";
+    };
   };
 
   home.packages = with pkgs; [
@@ -120,6 +181,12 @@
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.auto-move-windows
+    gnomeExtensions.arcmenu
+    gnomeExtensions.browser-tabs
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.custom-hot-corners-extended
+    gnomeExtensions.openweather
+    gnomeExtensions.tiling-assistant
   ];
 }
 
