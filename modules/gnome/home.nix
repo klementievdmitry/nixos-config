@@ -7,6 +7,7 @@ with lib;
       favorite-apps = [
         "Dota 2.desktop"
         "librewolf.desktop"
+        "firefox.desktop"
         "emacsclient.desktop"
         "com.obsproject.Studio.desktop"
         "steam.desktop"

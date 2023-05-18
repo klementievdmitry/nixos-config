@@ -33,12 +33,10 @@
 
       # Apps
       appimage-run
-      librewolf
-      tor-browser-bundle-bin
+      firefox
       discord
       qbittorrent
       tdesktop
-      element-desktop
 
       # File management
       okular
