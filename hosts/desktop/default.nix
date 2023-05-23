@@ -3,7 +3,6 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++ # Hardware conf
-    [ (import ../base/default.nix) ] ++ # Base system configuration
     [ (import ../../modules/programs/games.nix) ] ++ # Games
     [ (import ../../modules/gnome/default.nix) ]; # Gnome
   
