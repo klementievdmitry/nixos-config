@@ -6,7 +6,6 @@ with lib;
     "org/gnome/shell" = {
       favorite-apps = [
         "Dota 2.desktop"
-        "librewolf.desktop"
         "firefox.desktop"
         "emacsclient.desktop"
         "com.obsproject.Studio.desktop"
@@ -14,7 +13,6 @@ with lib;
         "com.parsecgaming.parsec.desktop"
         "org.gnome.Console.desktop"
         "element-desktop.desktop"
-        "torbrowser.desktop"
         "org.telegram.desktop.desktop"
         "discord.desktop"
         "org.gnome.Nautilus.desktop"
@@ -29,7 +27,6 @@ with lib;
         "caffeine@patapon.info"
         "clipboard-indicator@tudmotu.com"
         "arcmenu@arcmenu.com"
-        "browser-tabs@com.github.harshadgavali"
         "custom-hot-corners-extended@G-dH.github.com"
         "dash-to-panel@jderose9.github.com"
         "openweather-extension@jenslody.de"
@@ -199,7 +196,6 @@ with lib;
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.auto-move-windows
     gnomeExtensions.arcmenu
-    gnomeExtensions.browser-tabs
     gnomeExtensions.dash-to-panel
     gnomeExtensions.custom-hot-corners-extended
     gnomeExtensions.openweather
