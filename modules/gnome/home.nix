@@ -181,6 +181,22 @@ with lib;
       ];
       xkb-options = mkArray type.string ["grp:win_space_toggle"];
     };
+
+    "org/gnome/shell/extensions/arcmenu" = with hm.gvariant; {
+      enable-menu-hotkey = true;
+      enable-standlone-runner-menu = true;
+      runner-menu-hotkey-type = "Custom";
+      runner-menu-custom-hotkey = ["<Ctrl>space"];
+      pinned-app-list = [
+        # "<NAME>" "<ICON>" "<COMMAND/DESKTOP_LINK>"
+        "LibreWolf" "" "librewolf.desktop"
+        "Files" "" "org.gnome.Nautilus.desktop"
+        "Terminal" "" "org.gnome.Terminal.desktop"
+
+        # NAME             ICON                  APPLICATION
+        "ArcMenu Settings" "ArcMenu_ArcMenuIcon" "gnome-extensions prefs arcmenu@arcmenu.com"
+      ];
+    };
   };
 
   home.packages = with pkgs; [
